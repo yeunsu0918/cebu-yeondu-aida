@@ -1,0 +1,784 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cebu Yeondu Dive AIDA3 공부장</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--c:#0b7fa8;--d:#0b5c7a;--bg:#f4f9fb;--ok:#1a8f4c;--no:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;background:var(--bg);color:#222;line-height:1.65;font-size:16px}
+header{background:linear-gradient(135deg,#0b5c7a,#11a3c9);color:#fff;padding:18px 16px 12px}
+header h1{margin:0;font-size:21px}header p{margin:4px 0 0;font-size:13px;opacity:.9}
+nav{position:sticky;top:0;z-index:9;background:#fff;display:flex;overflow-x:auto;border-bottom:1px solid #d6e6ec}
+nav button{flex:1 0 auto;border:0;background:none;padding:12px 14px;font-size:15px;color:#555;border-bottom:3px solid transparent;font-family:inherit}
+nav button.on{color:var(--d);border-color:var(--c);font-weight:700}
+main{max-width:760px;margin:0 auto;padding:14px}
+section{display:none}section.on{display:block}
+.card{background:#fff;border-radius:12px;padding:14px 16px;margin:0 0 12px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+h2{font-size:17px;color:var(--d);margin:4px 0 8px}
+ul{padding-left:20px;margin:6px 0}li{margin:4px 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px;background:#fff}
+td,th{border:1px solid #cfe1e8;padding:7px 8px;vertical-align:top;text-align:left}th{background:#e6f3f8}
+details{background:#fff;border-radius:10px;margin:0 0 8px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+details summary{padding:12px 14px;cursor:pointer;font-weight:600;color:var(--d);list-style:none}
+details summary::before{content:"▸ ";color:var(--c)}details[open] summary::before{content:"▾ "}
+details>*:not(summary){padding:0 16px 10px}
+.ans{background:#fff8e6;border-left:4px solid #f0a500;margin:0 14px 12px;padding:8px 12px!important;border-radius:6px}
+.tip{background:#e9f6ee;border-left:4px solid var(--ok);padding:10px 12px;border-radius:8px;font-size:14.5px;margin-bottom:12px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.ctrl select,.ctrl button{font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid #bcd3dc;background:#fff}
+.btn{background:var(--c)!important;color:#fff;border-color:var(--c)!important;font-weight:600}
+.q{font-weight:700;margin-bottom:8px}.tag{display:inline-block;font-size:12px;background:#e6f3f8;color:var(--d);border-radius:20px;padding:1px 9px;margin-right:6px;font-weight:600}
+.tag.m{background:#fde8d8;color:#b0521d}.tag.t{background:#ece4fb;color:#5b3aa6}
+label.opt{display:block;border:1px solid #d6e6ec;border-radius:9px;padding:9px 12px;margin:6px 0;cursor:pointer;background:#fbfdfe}
+label.opt input{margin-right:8px}
+label.opt.right{border-color:var(--ok);background:#e9f6ee}label.opt.wrong{border-color:var(--no);background:#fbeaea}
+textarea{width:100%;min-height:64px;font:inherit;font-size:15px;padding:8px;border-radius:8px;border:1px solid #bcd3dc}
+.exp{margin-top:8px;padding:8px 12px;border-radius:8px;background:#f2f7f9;font-size:14.5px;display:none}
+.exp.show{display:block}.res{font-weight:700}.res.ok{color:var(--ok)}.res.no{color:var(--no)}
+.score{position:sticky;bottom:0;background:#fff;border-top:1px solid #d6e6ec;padding:10px 14px;text-align:center;font-weight:700;color:var(--d);margin:0 -14px}
+.self{display:none;gap:8px;margin-top:8px}.self.show{display:flex}.self button{flex:1;font:inherit;padding:8px;border-radius:8px;border:1px solid #ccc;background:#fff}
+.fc{min-height:150px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:20px;font-weight:700;color:var(--d);cursor:pointer;user-select:none}
+.fc.back{font-size:17px;color:#333;font-weight:500}
+.srch{position:sticky;top:46px;z-index:8;background:var(--bg);display:flex;gap:6px;align-items:center;padding:6px 0 8px;flex-wrap:wrap}
+.srch input{flex:1 1 180px;font:inherit;font-size:15px;padding:9px 10px;border-radius:8px;border:1px solid #bcd3dc}
+.srch button{font:inherit;font-size:14px;padding:8px 12px;border-radius:8px;border:1px solid #bcd3dc;background:#fff}#scnt{font-size:13px;color:#555}
+.toc a{display:block;padding:4px 0;color:var(--c);text-decoration:none;font-size:14.5px}
+.full h2.mh1{font-size:19px;color:#fff;background:var(--c);padding:6px 10px;border-radius:6px;margin:22px 0 10px}
+.full h3.mh2{font-size:16.5px;color:var(--d);border-bottom:2px solid #cfe1e8;padding-bottom:3px;margin:18px 0 8px}
+.full h4.mh3,.full h5{font-size:15.5px;color:#333;margin:14px 0 6px}
+.full p{margin:6px 0}.full blockquote{margin:8px 0;padding:6px 12px;background:#f2f7f9;border-left:4px solid var(--c);border-radius:6px}
+mark{background:#ffe066;padding:0 1px}mark.cur{background:#ff9f1a}
+#qz .card{border-radius:14px}
+.qhome h2{margin:0 0 10px}
+.stat3{display:flex;gap:8px;margin-bottom:10px}
+.stat3>div{flex:1;background:#f2f8fb;border-radius:10px;padding:10px 6px;text-align:center}
+.stat3 b{display:block;font-size:22px;color:var(--d)}.stat3 span{font-size:12px;color:#667}
+.pbar{height:8px;background:#e3eef3;border-radius:6px;overflow:hidden;flex:1}
+.pbar i{display:block;height:100%;background:var(--c);border-radius:6px;transition:width .3s}
+.pbar i.low{background:#e08a3c}
+.pbar.thin{height:5px;margin:0 0 12px}
+.hint{font-size:13px;color:#667;margin:8px 0 4px}
+.lbl{font-size:13px;font-weight:700;color:#556;margin:14px 0 6px}.lbl:first-child{margin-top:0}
+.seg{display:flex;gap:8px}
+.seg button{flex:1;font:inherit;border:1.5px solid #cfe1e8;background:#fff;border-radius:12px;padding:10px 6px;text-align:center;color:#334}
+.seg button b{display:block;font-size:16px}.seg button small{font-size:11.5px;color:#778}
+.seg button.on{border-color:var(--c);background:#e8f5fa;color:var(--d)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:14px;border:1.5px solid #cfe1e8;background:#fff;border-radius:20px;padding:6px 13px;color:#445}
+.chip.on{background:var(--c);border-color:var(--c);color:#fff}
+.actbar{position:sticky;bottom:0;display:flex;gap:8px;background:linear-gradient(transparent,var(--bg) 30%);padding:14px 0 12px;margin-top:4px;z-index:5}
+.big{flex:2;font:inherit;font-size:16px;font-weight:700;border:0;border-radius:12px;padding:14px 10px;background:var(--c);color:#fff}
+.big.ghost{flex:1;background:#fff;color:var(--d);border:1.5px solid #bcd3dc}
+.big:disabled{opacity:.4}
+.reset{text-align:center;font-size:13px}.reset a{color:#889}
+.qtop{display:flex;justify-content:space-between;align-items:center;margin:2px 0 8px}
+.xbtn{font:inherit;font-size:14px;border:0;background:none;color:#778;padding:4px 0}
+.qcnt{font-weight:700;color:var(--d)}
+.qcard{min-height:50vh}
+.qmeta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.qtag{font-size:12px;font-weight:700;border-radius:20px;padding:2px 10px;background:#e6f3f8;color:var(--d)}
+.qtag.m{background:#fde8d8;color:#b0521d}.qtag.t{background:#ece4fb;color:#5b3aa6}
+.qcat{font-size:12px;color:#99a}
+.qtext{font-size:18px;font-weight:700;line-height:1.5;margin-bottom:14px}
+.opt2{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;font-size:15.5px;border:1.5px solid #d6e6ec;background:#fbfdfe;border-radius:12px;padding:12px;margin:8px 0;color:#223}
+.opt2 .ltr{flex:0 0 28px;height:28px;border-radius:50%;background:#e6f3f8;color:var(--d);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.opt2 span:nth-child(2){flex:1}
+.opt2 .ck{flex:0 0 24px;height:24px;border-radius:6px;border:1.5px solid #bcd3dc;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.opt2.sel{border-color:var(--c);background:#e8f5fa}.opt2.sel .ltr{background:var(--c);color:#fff}.opt2.sel .ck{background:var(--c);border-color:var(--c)}
+.opt2.right{border-color:var(--ok);background:#e9f6ee}.opt2.right .ltr{background:var(--ok);color:#fff}
+.opt2.wrong{border-color:var(--no);background:#fbeaea}.opt2.wrong .ltr{background:var(--no);color:#fff}
+.opt2:disabled{opacity:1}
+#qz textarea{width:100%;min-height:90px;font:inherit;font-size:15.5px;padding:10px;border-radius:12px;border:1.5px solid #cfe1e8}
+.fb{margin-top:12px;padding:12px 14px;border-radius:12px;background:#f2f7f9;font-size:15px}
+.fb.okb{background:#e9f6ee}.fb.nob{background:#fbeaea}
+.fbh{font-weight:700;margin-bottom:4px}.fbe{color:#556;font-size:14px;margin-top:6px}
+.selfq{font-weight:700;margin:10px 0 6px;font-size:14px}
+.seg2{display:flex;gap:8px}.seg2 button{flex:1;font:inherit;padding:10px;border-radius:10px;border:1.5px solid #cfe1e8;background:#fff}
+.seg2 button.on.ok{background:var(--ok);border-color:var(--ok);color:#fff}.seg2 button.on.no{background:var(--no);border-color:var(--no);color:#fff}
+.res{text-align:center;padding:22px 16px}
+.ring{--p:0;width:150px;height:150px;border-radius:50%;margin:0 auto 12px;background:conic-gradient(var(--c) calc(var(--p)*1%),#e3eef3 0);display:flex;align-items:center;justify-content:center}
+.res.fail .ring{background:conic-gradient(#e08a3c calc(var(--p)*1%),#e3eef3 0)}
+.ring span{width:118px;height:118px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800;color:var(--d)}
+.ring small{font-size:18px}
+.rmsg{font-size:17px;font-weight:700;margin-bottom:4px}.rsub{font-size:13.5px;color:#667}
+.crow{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:14px}.crow span{flex:0 0 44px}.crow b{flex:0 0 40px;text-align:right;color:var(--d)}
+details.wr{background:#fbfcfd;border:1px solid #e1ecf1;box-shadow:none;margin:6px 0}
+details.wr summary{font-size:14.5px;color:#334;font-weight:600}
+.wb{font-size:14px;padding:0 14px 12px!important}.wb>div{margin:4px 0}
+.mine{display:inline-block;font-size:12px;font-weight:700;background:#fbeaea;color:var(--no);border-radius:6px;padding:0 6px;margin-right:4px}
+.rt{display:inline-block;font-size:12px;font-weight:700;background:#e9f6ee;color:var(--ok);border-radius:6px;padding:0 6px;margin-right:4px}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:rgba(30,40,50,.9);color:#fff;padding:9px 16px;border-radius:20px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50}
+#toast.show{opacity:1}
+.qtag.ox{background:#e3f5e9;color:#1a8f4c}.qtag.mt{background:#fff1c9;color:#8a6200}
+.mrow{border:1.5px solid #d6e6ec;border-radius:12px;padding:10px 12px;margin:8px 0;background:#fbfdfe}
+.mrow .ml{font-weight:700;margin-bottom:6px;color:#223}
+.mrow select{width:100%;font:inherit;font-size:15px;padding:9px;border-radius:9px;border:1.5px solid #cfe1e8;background:#fff}
+.mrow.right{border-color:var(--ok);background:#e9f6ee}.mrow.wrong{border-color:var(--no);background:#fbeaea}
+.mfix{font-size:13.5px;color:var(--ok);font-weight:700;margin-top:6px}
+.qtime{font-size:13px;color:var(--mute);margin-left:auto;margin-right:10px}.qtime b{color:#2b7bbf;font-variant-numeric:tabular-nums;font-size:15px}
+.qmeta .flag{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--mute);cursor:pointer;white-space:nowrap}
+.qmeta .flag input{width:18px;height:18px;accent-color:#2b7bbf}
+.flags{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0 0;font-size:13px;color:var(--mute)}
+.flags button{min-width:36px;height:32px;border-radius:8px;border:1px solid #2b7bbf;background:#fff;color:#2b7bbf;font-weight:700;font-family:inherit}
+.flags button.cur{background:#2b7bbf;color:#fff}
+.mlist{list-style:none;padding:12px 14px;margin:0 0 10px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.9}
+.mlist b{display:inline-block;min-width:22px}
+
+/* ===== modern theme override ===== */
+:root{--c:#0e7490;--d:#0f172a;--bg:#f6f7f9;--ok:#15803d;--no:#dc2626;--line:#e5e7eb;--mute:#64748b}
+body{font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;background:var(--bg);color:#1e293b;letter-spacing:-.01em;-webkit-text-size-adjust:100%}
+body{overflow-x:clip}
+header{background:#fff;color:var(--d);padding:22px 18px 16px;border-bottom:1px solid var(--line)}
+.hwrap{max-width:760px;margin:0 auto}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+header h1{font-size:24px;font-weight:800;margin:4px 0 2px;letter-spacing:-.02em}
+.hsub{margin:0;font-size:13px;color:var(--mute)}
+.kakao{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:600;color:#3c1e1e;text-decoration:none;background:#fee500;padding:6px 12px;border-radius:999px}
+nav{position:sticky;top:0;z-index:9;display:flex;overflow:hidden;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+nav button{flex:1 1 0;min-width:0;white-space:nowrap;padding:12px 1px 10px;font-size:clamp(12px,3.5vw,14px);color:var(--mute);border:0;border-bottom:2px solid transparent;background:none;font-family:inherit}
+nav button.on{color:var(--d);font-weight:700;border-bottom-color:var(--d)}
+main{padding:16px 14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:none;padding:16px}
+h2{font-size:17px;font-weight:800;color:var(--d);letter-spacing:-.02em}
+h3{color:var(--d)}
+.tip{background:#f1f5f9;border:0;border-radius:12px;color:#334155;padding:12px 14px}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:none}
+details summary{color:var(--d);font-weight:700;padding:14px 16px}
+details summary::before{content:"";display:inline-block;width:7px;height:7px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(-45deg);margin:0 10px 2px 0;transition:transform .2s}
+details[open] summary::before{content:"";transform:rotate(45deg)}
+.ans{background:#f8fafc;border-left:3px solid var(--c);border-radius:10px}
+table{border-radius:12px;overflow:hidden;font-size:14px}
+td,th{border:0;border-bottom:1px solid var(--line);padding:9px 10px}
+th{background:#f8fafc;color:#334155;font-weight:700}
+.fc{color:var(--d)}
+.srch{top:41px;background:var(--bg)}
+.toc a{color:var(--c)}
+.full h2.mh1{background:none;color:var(--d);border-bottom:2px solid var(--d);border-radius:0;padding:0 0 6px}
+.full h3.mh2{border-bottom:1px solid var(--line)}
+.full blockquote{background:#f8fafc;border-left:3px solid var(--c)}
+footer{color:#94a3b8}
+footer a{color:var(--c);font-weight:600;text-decoration:none}
+/* quiz refinements */
+.stat3>div{background:#f8fafc;border:1px solid var(--line)}
+.stat3 b{color:var(--d)}
+.seg button{border:1px solid var(--line);border-radius:12px}
+.seg button.on{border-color:var(--d);background:#f8fafc;color:var(--d);box-shadow:inset 0 0 0 1px var(--d)}
+.chip{border:1px solid var(--line)}
+.chip.on{background:var(--d);border-color:var(--d)}
+.big{background:var(--d);border-radius:14px}
+.big.ghost{border:1px solid var(--line)}
+.opt2{border:1px solid var(--line);background:#fff}
+.opt2 .ltr{background:#f1f5f9;color:#334155}
+.opt2.sel{border-color:var(--d);background:#f8fafc;box-shadow:inset 0 0 0 1px var(--d)}
+.opt2.sel .ltr,.opt2.sel .ck{background:var(--d);border-color:var(--d);color:#fff}
+.qtag{background:#f1f5f9;color:#334155}
+.qtag.m{background:#fff7ed;color:#c2410c}.qtag.t{background:#f5f3ff;color:#6d28d9}.qtag.ox{background:#f0fdf4;color:#15803d}.qtag.mt{background:#fefce8;color:#a16207}
+.pbar{background:#eef2f6}.pbar i{background:var(--d)}
+.ring{background:conic-gradient(var(--d) calc(var(--p)*1%),#eef2f6 0)}
+.mrow{border:1px solid var(--line);background:#fff}
+.actbar{background:linear-gradient(rgba(246,247,249,0),var(--bg) 35%)}
+/* desktop / tablet */
+nav{padding:0 max(0px,calc((100% - 760px)/2))}
+@media (min-width:768px){
+  header{padding:34px 24px 22px}
+  header h1{font-size:30px}
+  .hsub{font-size:14px}
+  nav button{font-size:15px;padding:14px 4px 12px}
+  main{padding:24px 20px 40px}
+  .card{padding:20px 22px}
+  .qtext{font-size:20px}
+  .opt2{padding:14px 16px}
+  .opt2:hover{border-color:#94a3b8}
+  .chip:hover,.seg button:hover{border-color:#94a3b8}
+  nav button:hover{color:var(--d)}
+  .actbar{position:static;background:none;padding:16px 0}
+  .big{flex:0 1 240px}.big.ghost{flex:0 1 140px}
+  .actbar{justify-content:flex-end}
+  .qcard{min-height:auto}
+  #toast{bottom:40px}
+  .srch{top:47px}
+}
+.vid .vlink{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--d);border:1px solid var(--line);border-radius:12px;padding:8px;margin:4px 0 10px}
+.vid .vlink img{width:120px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;flex:0 0 auto}
+.vid .vlink b{display:block;font-size:15px;line-height:1.4}.vid .vlink small{color:var(--mute);font-size:12.5px}
+.chap{margin:0;padding-left:20px;font-size:14.5px}.chap li{margin:3px 0}.chap a{color:var(--d);text-decoration:none;border-bottom:1px solid var(--line)}
+.chap .tm{color:var(--mute);font-size:12.5px;margin-left:4px}
+.vid .note{font-size:13px;color:var(--mute);margin:10px 0 0}
+.orow{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;background:#fff}
+.orow select{flex:0 0 64px;font:inherit;font-size:16px;padding:8px;border-radius:9px;border:1px solid var(--line);background:#fff}
+.orow .otx{flex:1;font-size:15px;line-height:1.5;padding-top:6px}
+.orow.right{border-color:var(--ok);background:#f0fdf4}.orow.wrong{border-color:var(--no);background:#fef2f2}
+.htop{display:flex;align-items:center;gap:14px;justify-content:space-between}
+.htxt{min-width:0}
+.inst{margin:0;flex:0 0 auto;text-align:center}
+.inst img{width:68px;height:68px;border-radius:50%;object-fit:cover;display:block;margin:0 auto;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
+.inst figcaption{font-size:11px;font-weight:700;color:var(--d);margin-top:5px;line-height:1.25}
+.inst figcaption span{font-weight:500;color:var(--mute)}
+@media (min-width:768px){.inst img{width:92px;height:92px}.inst figcaption{font-size:12px}}
+.hsub,header h1{word-break:keep-all}
+.steps{counter-reset:st;list-style:none;padding:0;margin:6px 0 0}
+.steps li{counter-increment:st;position:relative;padding:0 0 14px 40px;font-size:14.5px;line-height:1.6;color:#334155;word-break:keep-all}
+.steps li::before{content:counter(st);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--c);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:12px;top:30px;bottom:4px;width:2px;background:var(--line)}
+.steps li b:first-child{display:block;color:var(--d);font-size:15px;margin-bottom:2px}
+.steps a{color:var(--c)}
+.howto .note{font-size:13px;color:var(--mute);background:var(--bg);border-radius:10px;padding:10px 12px;margin:4px 0 0;line-height:1.55;word-break:keep-all}
+.forms{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:2px 0 10px}
+.forms a{display:block;text-decoration:none;color:var(--d);border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
+.forms a b{display:block;font-size:14px;line-height:1.35;word-break:keep-all}.forms a small{color:var(--mute);font-size:12px}
+.forms a::before{content:"PDF";display:inline-block;font-size:10px;font-weight:800;color:#fff;background:#dc2626;border-radius:4px;padding:1px 5px;margin-bottom:6px}
+.fill{margin:0 0 8px;padding-left:18px;font-size:13.5px;line-height:1.6;color:#334155;word-break:keep-all}
+.kintro{font-size:13px;color:var(--mute);margin:-4px 0 10px}
+.keys{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+@media (min-width:768px){.keys{grid-template-columns:1fr 1fr}}
+.keys li{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-left:5px solid var(--kc);border-radius:12px;padding:12px 14px;background:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.keys .kn{flex:0 0 auto;font-size:22px;font-weight:800;color:var(--kc);line-height:1;letter-spacing:-.03em;min-width:30px;padding-top:2px}
+.keys b{display:block;font-size:17px;font-weight:800;color:var(--d);letter-spacing:-.02em;line-height:1.35;word-break:keep-all}
+.keys p{margin:3px 0 0;font-size:13.5px;line-height:1.55;color:#475569;word-break:keep-all}
+.keys .kt{display:inline-block;font-size:11px;font-weight:700;color:var(--kc);background:var(--kb);border-radius:999px;padding:1px 8px;margin-bottom:4px}
+.keys li.hide p{color:transparent;background:#eef2f6;border-radius:6px;user-select:none}
+.k-safe{--kc:#dc2626;--kb:#fef2f2}.k-phy{--kc:#7c3aed;--kb:#f5f3ff}.k-br{--kc:#0e7490;--kb:#ecfeff}.k-eq{--kc:#d97706;--kb:#fffbeb}.k-tec{--kc:#15803d;--kb:#f0fdf4}
+.inst img{width:58px;height:auto;aspect-ratio:575/765;border-radius:10px;object-fit:cover;border:0;box-shadow:0 0 0 1px var(--line)}
+@media (min-width:768px){.inst img{width:76px;height:auto}}
+.inst img{width:72px;border-radius:4px}
+@media (min-width:768px){.inst img{width:100px}}
+
+footer{font-size:12px;color:#888;text-align:center;padding:18px 12px 70px}
+</style></head><body>
+<header><div class="hwrap htop"><div class="htxt"><div class="eyebrow">Cebu · Yeondu Dive</div><h1>AIDA3 이론 공부장</h1><p class="hsub">AIDA3 Advanced Freediver Manual v1.06 (2021) 기준 한글 정리</p></div><figure class="inst"><img src="data:image/jpeg;base64,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" alt=""><figcaption>강사 우연두<br><span>Inst. Green</span></figcaption></figure></div><div class="hwrap"><a class="kakao" href="https://pf.kakao.com/_metyn" target="_blank" rel="noopener">연두쌤 카카오톡 채널 →</a></div></header>
+<nav><button data-t="key" class="on">핵심</button><button data-t="ch">요약</button><button data-t="num">숫자</button><button data-t="rev">복습</button><button data-t="word">용어</button><button data-t="quiz">모의고사</button></nav>
+<main>
+<section id="quiz"><div id="qz"></div></section>
+<section id="key" class="on"><div class="tip"><b>공부 순서</b> 핵심 → 요약(4·5·8장 중점) → 숫자 → 복습 → 용어 → 모의고사</div><div class="card"><h2>꼭 외울 한 줄 10개</h2><p class="kintro">카드를 누르면 설명이 가려져요. 제목만 보고 떠올려보세요.</p><ol class="keys"><li class="k-safe"><span class="kn">01</span><div><span class="kt">안전</span><b>블랙아웃은 훈련이 아니다</b><p>반복해도 뇌는 저산소에 적응하지 않아요. LMC·BO는 기술 부족.</p></div></li><li class="k-eq"><span class="kn">02</span><div><span class="kt">이퀄</span><b>AIDA3부터는 프렌젤</b><p>배는 완전히 풀고, 혀로 밀고, 목은 잠가요. 그루퍼 콜이 나면 배에 힘이 들어간 것.</p></div></li><li class="k-safe"><span class="kn">03</span><div><span class="kt">압착</span><b>안 되면 멈춘다</b><p>이퀄 실패 자체는 부상이 아니에요. 계속 내려가서 다쳐요. 다치면 Stay dry, see doctor.</p></div></li><li class="k-safe"><span class="kn">04</span><div><span class="kt">압착</span><b>리버스 블록엔 이퀄 금지</b><p>줄 잡고 멈추고, 코 막고 삼키며 천천히 상승. 원인은 감기와 코막힘약.</p></div></li><li class="k-phy"><span class="kn">05</span><div><span class="kt">폐</span><b>RV = TLC의 25%</b><p>잔기량에 닿는 실패 수심부터는 일반 이퀄이 안 돼요. FRC(50%)는 빈 폐가 아님.</p></div></li><li class="k-phy"><span class="kn">06</span><div><span class="kt">폐</span><b>분홍 거품이면 폐 압착</b><p>즉시 중단, 기침 한 번만, 순산소, 병원. 최소 1주일 쉬기.</p></div></li><li class="k-tec"><span class="kn">07</span><div><span class="kt">부력</span><b>NB는 목표 수심의 1/3</b><p>단 -10m보다 얕게는 금지. 웨이트로 덕다이브 실력을 대신하지 않아요.</p></div></li><li class="k-safe"><span class="kn">08</span><div><span class="kt">저산소</span><b>마지막 10m가 가장 위험</b><p>10→0m에서 압력이 50% 줄어 얕은 물 블랙아웃. 세이프티는 -10m 이상에서.</p></div></li><li class="k-br"><span class="kn">09</span><div><span class="kt">훈련</span><b>CO2 표 = 최대 STA의 50%</b><p>숨 참기는 고정, 쉬는 시간을 줄여요. STA 8회, DYN 20회. 저산소는 만들지 않음.</p></div></li><li class="k-phy"><span class="kn">10</span><div><span class="kt">MDR</span><b>MDR 반응 5가지</b><p>말초혈관 수축, 서맥, 비장 효과, 블러드 시프트, 대사 저하. 반사(reflex)가 아님.</p></div></li></ol></div><div class="card howto"><h2>AIDA3 수료 조건</h2><ol class="steps">
+<li><b>등록 조건</b>만 18세 이상(16~17세는 보호자 동의), AIDA2 수료 또는 크로스오버 평가 통과, 건강확인서·면책동의서 제출.</li>
+<li><b>이론</b>최소 3회 수업, 필기시험 75% 이상. 떨어지면 한 번 다시 볼 수 있어요.</li>
+<li><b>수영장 (최소 2회, 최대 5m)</b>STA <b>2분 45초</b>, DYNB <b>55m</b>, 55m 버디, STA·DYN CO2 표 설계(DYN은 20랩 이상), LMC·BO 구조.</li>
+<li><b>바다 (최소 4회, 2일 이상, 최대 30m)</b>CWTB <b>24m</b>(수온 12°C 미만이면 21m), 프렌젤, 프리폴, 중성부력 찾기, 랜야드 퀵릴리즈, 15m에서 버디 3회 이상.</li>
+<li><b>구조·자가구조</b>10~15m 상승 중 BO 구조 후 수면 BTT, 15m에서 팔로만 상승(다리 쥐 가정), 10m에서 마스크 벗고 상승, 50m 토잉.</li>
+</ol><p class="note">기준: AIDA3 교재 v1.06(2021), AIDA3 과정 가이드라인 v3.4(2024). AIDA2 교재는 2026년판이 새로 나왔기 때문에 AIDA3도 개정됐을 수 있어요. 실제 기준은 담당 강사 안내를 따르세요.</p></div></section>
+<section id="ch"><p style="font-size:14px;color:#666;margin:0 0 10px">장을 눌러 펼쳐 보세요. 4장 압착, 5장 폐, 8장 훈련이 AIDA3의 핵심이에요.</p><details class="ch"><summary>1장 · AIDA3 과정</summary>
+<ul>
+<li>AIDA3는 "기본기"를 넘어 <b>훈련하는 법</b>을 배우는 과정. 기록은 좋은 기술의 결과이지, 한계를 밀어붙인 결과가 아니다.</li>
+<li>등록 조건: <b>만 18세 이상</b>(16~17세는 보호자 동의), <b>AIDA2 수료</b> 또는 크로스오버 평가 통과, 건강확인서·면책동의서 제출.</li>
+<li>과정 구성: 이론 <b>최소 3회</b>, 수영장 <b>최소 2회</b>, 바다 <b>최소 4회(2일 이상)</b>. 전체 최소 3일.</li>
+<li>필기시험 합격 <b>75%</b>. 처음에 떨어지면 <b>한 번 다시</b> 볼 수 있다. 틀린 문제는 강사와 같이 풀어본다.</li>
+<li><b>크로스오버 평가</b>: 다른 단체 자격이 있거나 경험자면 AIDA2 수준(STA 2분+, DYN 40m+, CWT 12~20m, FIM 시범, 버디·구조)을 강사가 평가. 예전 "크로스오버 표"는 이제 유효하지 않다.</li>
+<li>건강확인서에 YES가 하나라도 있으면 <b>의사 소견서</b> 필요. 외딴 섬으로 가기 전에 미리 준비.</li>
+</ul>
+
+</details>
+<details class="ch"><summary>2장 · 생리학</summary>
+<ul>
+<li>보통 사람은 최적 조건에서 <b>60~80초</b> 숨 참기 가능.</li>
+<li>혈액은 체중의 약 <b>8%</b>(여성 4~5L, 남성 5~6L). 기능: <b>운반</b>(가스·영양·노폐물·호르몬·열), <b>보호</b>(백혈구·항체·혈소판), <b>조절</b>(pH·수분).</li>
+<li>적혈구 속 <b>헤모글로빈</b>(철 포함 단백질)이 산소 대부분을 운반. 적혈구 비율 36~54%.</li>
+<li>평소 산소포화도 <b>96~99%</b>. 숨 쉬는 상태에서 96% 아래면 지쳤거나 아픈 것 → 숨 참기·다이빙 금지.</li>
+<li><b>청색증(Cyanosis, 파란 입술)</b>: 산소가 줄기 시작했다는 "첫 경고". 본인은 못 느끼니 <b>버디가 알려줘야</b> 한다. 몇 번 숨 쉬면 사라짐. 추워서 혈관이 수축해도 생김 → 추우면 다이빙 금지.</li>
+<li><b>확산</b>: 가스가 농도 높은 곳 → 낮은 곳으로 이동. 농도 차(기울기)가 클수록 빠르다. 폐포에서 O2는 혈액으로, CO2는 공기로.</li>
+<li><b>동맥</b>: 심장 → 장기(보통 산소 많음). <b>정맥</b>: 장기 → 심장(산소 적음). 예외: <b>폐동맥</b>은 산소 적은 피를 폐로, <b>폐정맥</b>은 산소 많은 피를 심장으로.</li>
+<li><b>과호흡</b>: 산소포화도는 그대로, <b>CO2만 낮춘다</b>. 그래서 경고 신호가 늦어지고 블랙아웃이 온다.</li>
+<li>과호흡의 나쁜 점 3가지: ① 뇌혈관 수축 → 뇌로 가는 피 감소(심하면 수면에서도 BO) ② <b>MDR이 약해짐</b> → 산소 절약 안 됨 ③ <b>보어 효과</b>: 혈액이 알칼리성 → 헤모글로빈이 산소를 꽉 붙잡아 조직에 덜 줌.</li>
+<li>산소포화도가 약 <b>45%</b>까지 떨어지면 의식을 잃는다.</li>
+</ul>
+
+</details>
+<details class="ch"><summary>3장 · 이퀄라이징</summary>
+<ul>
+<li><b>외이(바깥귀)</b>: 물로 꽉 차야 한다. 고개를 살짝 기울여 공기를 빼기. 후드가 공기를 가두면 관자놀이 쪽을 살짝 들어 물을 넣거나 귀 위치에 작은 구멍.</li>
+<li><b>고막</b>: 압력 변화를 느끼는 센서. <b>압력감은 정상, 통증은 경보</b> → 바로 하강 멈춤.</li>
+<li><b>중이</b>: 공기가 차 있어 이퀄이 필요한 곳. <b>유스타키오관</b>이 중이와 비인두를 연결 → 귀와 부비강이 한 번에 이퀄된다.</li>
+<li>유스타키오관 주변 근육은 평소 닫혀 있고 삼킬 때 열린다("딸깍"). 근육이 편할수록 이퀄이 쉽다. 핸즈프리 = 이 근육을 의지로 움직이는 것.</li>
+<li><b>내이(달팽이관)</b>: 액체로 차 있어 이퀄 필요 없음.</li>
+<li><b>부비강</b>: 두개골 속 빈 공간, 점막·점액으로 덮임. 좁은 출구(<b>오스티움</b>)로 점액이 빠져나간다. 환기가 잘 돼야 막히지 않는다.</li>
+<li>바닷물로 코 세척 비추천: 오염물·세균 → 감염 위험. 조금 들어가는 건 괜찮음.</li>
+<li>AIDA3부터는 <b>발살바 대신 프렌젤</b>. 발살바는 얕은 초급 다이빙용.</li>
+<li>프렌젤 자가 테스트: 코로 숨 쉬기 → 코 잡기 → "T"나 "K" 발음 → 이퀄되면 프렌젤. 배에 힘이 들어가면 발살바. 버디가 배에 손을 대서 움직이면 아직 아님.</li>
+<li>프렌젤 핵심: <b>배는 완전히 이완</b>, 압력은 <b>혀(또는 볼)</b>로만, 목(성문)은 잠근다.</li>
+<li>깊은 곳에서 목에서 "꾸르륵" 소리(<b>그루퍼 콜</b>) = 배에 힘이 들어갔다는 신호 → 배 풀고 다시.</li>
+<li>스트레칭: 목 옆 늘리기, 목 굴리기, 턱 운동(혀 내밀기, 입술 따라 그리기, 턱 좌우·앞뒤, "낙타 씹기"). 턱은 약하니 아주 부드럽게.</li>
+<li>어떤 방법이든 핵심: <b>이퀄에 필요한 근육만 쓰고 나머지는 이완</b>. 목·턱 긴장이 흔한 실수.</li>
+</ul>
+
+</details>
+<details class="ch"><summary>4장 · 압착(Barotrauma)</summary>
+<ul>
+<li>압착 = 몸속 공기 공간과 주변 수압 차이로 생기는 손상. 하강·상승(리버스 블록) 둘 다 가능.</li>
+<li><b>이퀄이 안 되는 것 자체는 부상이 아니다.</b> 안 되는데 계속 내려가서(올라가서) 다친다. → 안 되면 멈추고, 그래도 안 되면 다이빙 중단.</li>
+<li>압착이 생기면 4단어: <b>"Stay dry, see doctor"</b>(물 밖에 있고, 병원 가기). 다 나을 때까지 물에 안 들어감.</li>
+<li><b>고막 천공(작은 구멍) / 파열(큰 찢어짐)</b>: 날카로운 통증, <b>어지럼·방향감 상실</b>, 일시적 청력 저하. 중이로 물이 들어가 감염 위험. 작은 천공은 몇 주면 낫기도, 큰 건 수술.</li>
+<li><b>중이 압착</b>: 이퀄 실패 후 계속 하강 → 피·체액이 중이로 밀려 들어감. 심한 통증(며칠), 귀 먹먹, 청력 저하. 감염 위험 크니 반드시 병원. <b>비행기도 피하기.</b> 회복 며칠~몇 달, 의사 허락 후 다이빙.</li>
+<li><b>리버스 블록</b>: 상승 때 늘어난 공기가 못 빠져나감(유스타키오관·오스티움 막힘). 올라갈수록 통증. 원인: 감기·코막힘, <b>코막힘약(충혈제거제)</b> 복용. → 감기면 다이빙 금지, 약 먹고 다이빙 금지.</li>
+<li>리버스 블록 대처: 줄 잡고 멈춤 → <b>이퀄하지 않기</b>(공기를 더 넣는 꼴) → 버디에게 신호 → 아픈 쪽 목 늘리기·턱 흔들기·<b>코 막고 삼키기</b> → 최대한 천천히 상승.</li>
+<li><b>교대성 현훈(AV)</b>: 주로 상승 때 한쪽 귀 압력이 늦게 빠져 뇌가 몸이 도는 걸로 착각. 눈 떨림, 구역, 구토, 이명, 먹먹함. 얕으면 줄 잡고 멈추고, 깊으면 천천히 계속 상승. 이후 다이빙 중단·병원.</li>
+<li><b>후드 압착</b>: 잘 맞는 후드가 외이도에 공기를 가둬 고막·외이도 손상. 다이빙 전 귀에 물 채우기, 물속에서 후드를 <b>확 잡아당기지 않기</b>.</li>
+<li><b>부비강 압착</b>: 이마·광대 뒤·이까지 통증. 완전히 막힌 부비강은 입수하자마자 아픔 → 다이빙 불가. 하강 중 막히면 줄 잡고 멈춤 → 이완 → 다시 이퀄 → 안 되면 중단.</li>
+<li>올라와서 손에 코를 풀어 확인: <b>신선한 피</b>면 부비강 손상 → 다이빙 중단(며칠이면 나음). <b>검붉은 오래된 색</b>이면 예전 감염 흔적 → 조심하며 계속 가능.</li>
+<li>부비강 막힘 예방 1순위: <b>감기·코막힘 때 다이빙 금지</b> + <b>물 많이 마시기</b>.</li>
+<li>그 밖에: 증기 흡입, 정화 호흡(카팔라바티 등, 다이빙 직전엔 금지 — 과호흡이라서), 네티팟(끓인 물, 압력 없이), "아픈 쪽 위로" 자기(외이 염증은 아픈 쪽 아래로), SISA, 에어컨 피하기(26~27°C), 수분 보충.</li>
+<li>항히스타민·충혈제거제 복용 중엔 다이빙 금지.</li>
+</ul>
+
+</details>
+<details class="ch"><summary>5장 · 깊은 곳에서의 폐</summary>
+<ul>
+<li><b>TV(일회 호흡량)</b>: 편히 쉬는 숨, 약 <b>500mL</b>, 분당 10~20회.</li>
+<li><b>IRV / ERV</b>: 편한 들숨 뒤 더 들이쉴 수 있는 양 / 편한 날숨 뒤 더 내쉴 수 있는 양.</li>
+<li><b>VC(폐활량) = IRV + TV + ERV</b>. 한 번에 쓸 수 있는 최대 공기, 성인 3~5L.</li>
+<li><b>FRC(기능적 잔기량) = ERV + RV</b>. 편하게 내쉰 뒤 남은 공기, 총 폐용량의 약 <b>50%</b>. "빈 폐" 다이빙이 아니다. AIDA에는 빈 폐 다이빙이 없다.</li>
+<li><b>RV(잔기량)</b>: 최대로 내쉰 뒤 남은 공기, 평균 총 폐용량의 <b>25%</b>. 직접 측정 불가. 어디까지 정상 이퀄이 되는지를 결정.</li>
+<li><b>TLC(총 폐용량) = VC + RV</b>.</li>
+<li>VC 늘리는 가장 좋은 두 방법: ① <b>원 풀 브레스</b>(2단계 들숨) 제대로 ② <b>횡격막 스트레칭</b>으로 RV 줄이기.</li>
+<li>보일의 법칙대로 깊어질수록 폐 공기가 줄어 RV에 가까워진다. "<b>코끼리가 가슴을 밟는 느낌</b>" = RV 근처.</li>
+<li><b>실패 수심(Failure depth)</b>: RV에 도달해 일반 이퀄이 더 이상 안 되는 수심.</li>
+<li><b>폐 압착</b>: 생명을 위협할 수 있는 부상. 주원인은 준비 없이 RV보다 더 깊이 내려가는 것(너무 깊이, 너무 일찍). 스트레스·추위로 이완이 안 돼도 생김.</li>
+<li>폐 압착 증상: 안 없어지는 <b>가슴 답답함</b>, 쌕쌕거림, 계속 숨이 차는 느낌, 기침에 <b>분홍 거품</b>, 안 없어지는 피로.</li>
+<li>대처: <b>즉시 다이빙 중단</b>(줄 끌어올리기·버디도 하지 않기), 기침은 한 번만 하고 손바닥에 뱉어 확인, 천천히 얕게 숨, 버디에게 숨기지 말고 말하기, 천천히 움직이기, 가능하면 <b>순산소</b>, 병원. <b>최소 1주일</b> 다이빙 중단 + 전문의 허락.</li>
+<li>예방: 자기 인식, 이완 안 되면 다이빙 안 함, 추워서 떨리면 중단, 늑간근·횡격막 스트레칭, 바닥에서 <b>앞으로 구르는 턴</b>(낙하산 턴 금지), 천천히 적응.</li>
+<li>전폐 스트레칭에 <b>패킹 금지</b>(폐 손상과 관련). 횡격막 스트레칭은 <b>우디야나 반다</b>(완전히 내쉬고 목 잠그고 배꼽을 척추 쪽·위로 당기기).</li>
+</ul>
+
+</details>
+<details class="ch"><summary>6장 · 부력</summary>
+<ul>
+<li>너무 무거우면 위험, <b>너무 가벼워도</b> 하강 초반에 부력과 싸우느라 힘을 다 쓴다.</li>
+<li><b>아르키메데스 원리</b>: 물에 잠긴 물체는 밀어낸 물의 무게만큼 위로 뜨는 힘을 받는다.</li>
+<li><b>중성부력(NB)</b>: 내 무게 = 부력. 힘 안 들이고 그 수심에 머무름.</li>
+<li>NB 찾기 게임: FIM으로 예상 수심까지 → 엄지·검지로 OK 모양 만들어 줄에 걸고 다른 손 놓기 → 몸 완전히 풀기 → 10부터 1까지 세기. 올라가면 더 깊이, 가라앉으면 더 얕게 한 팔 길이씩 조정.</li>
+<li>NB 설정: <b>-10m보다 얕게는 위험</b>(상승이 힘듦), -20m보다 깊으면 하강이 힘듦. 경험칙: <b>목표 수심의 1/3</b>. 30m보다 얕은 다이빙은 NB를 <b>-10m</b>로.</li>
+<li>NB를 얕게 잡는 건(웨이트 더 차기) <b>기술 부족을 대신하지 못한다</b>. 하강이 힘들면 덕다이브를 연습.</li>
+<li><b>프리폴</b>: NB보다 깊어지면 폐·슈트 공기가 줄어 음성부력 → 힘 안 들이고 떨어진다. 프리폴 = 스태틱 + 유선형 + 이퀄.</li>
+<li>프리폴 자세: <b>머리는 몸 축과 일직선</b>. 아래를 보면 "바나나" 자세 → 수평 → 낙하산 자세로 느려짐.</li>
+<li>방향 틀어짐: <b>앞뒤(시상면)</b>는 머리·목을 살짝 앞/뒤로, <b>좌우(관상면)</b>는 주로 웨이트 불균형 → 원인 고치기. FIM·CNF에선 발을 살짝 바깥으로 돌려 방향 조정.</li>
+<li>바닥에서 앞으로 구르는 턴 → 상승 초반은 음성부력이라 힘차게 → NB 지나면 힘 줄이고 부력으로 떠오름.</li>
+<li>예: NB -10m, CWT 30m → 0~10m 강하게, 10~20m 점점 약하게, 20~30m 프리폴, 30~20m 강하게, 20~5m 점점 약하게, 5~0m 부력. 강하게 차는 구간은 약 20m뿐.</li>
+<li>프리폴 연습: NB까지 킥 수 세기 → 한쪽 다리 기준 <b>4킥 더</b> → 멈추고 유선형 → 속도 확인. 속도가 확 떨어지면 너무 일찍 멈춘 것 → 다음엔 2킥 추가.</li>
+<li>불편하면 바로 하강 멈추고 줄 잡고 천천히 상승.</li>
+</ul>
+
+</details>
+<details class="ch"><summary>7장 · 저산소증과 블랙아웃</summary>
+<ul>
+<li>LMC·BO는 레크리에이션 프리다이빙에서 <b>기술·지식 부족</b>으로 본다.</li>
+<li><b>저산소증</b>: 동맥혈 산소 분압이 낮아 산소 공급이 부족한 상태. 포화도 <b>86% 미만</b>이면 심한 저산소, <b>45~50%</b>면 의식 상실.</li>
+<li><b>뇌 저산소증</b>: 피는 충분히 가는데 피 속 산소가 부족. 의식이 있어도 가벼운 저산소를 반복하면 뇌 손상 가능.</li>
+<li><b>블랙아웃은 훈련 효과가 없다.</b> 반복해도 뇌가 저산소에 적응하지 않는다.</li>
+<li>가벼운 저산소 = <b>LMC</b>(단기기억·인지·운동 저하), 다이빙 후 수면에서만 생김.</li>
+<li><b>허혈(Ischemia)</b>: 산소는 괜찮은데 <b>피가 덜 가는</b> 것. 원인: 저혈압, 갑자기 일어남, 과호흡(뇌혈관 수축), <b>꽉 끼는 후드(목)</b>, 슈트 속 공기주머니 압박.</li>
+<li><b>돌턴의 법칙</b>: 혼합기체 전체 압력 = 각 기체 분압의 합. 공기 = 질소 79% + 산소 21% → 산소 분압 0.21bar. 안전 범위 <b>0.16~1.6bar</b>.</li>
+<li><b>얕은 물 블랙아웃(SWB)</b>: 다이빙 끝 무렵 상승 중 압력 변화로 심해지는 저산소. 수영장에서 일어나는 BO를 말하는 게 아니다.</li>
+<li>원리: 하강 때 폐가 눌려 산소 분압↑ → 산소가 잘 공급됨. 상승 때 분압↓ → 마지막 몇 m에서 산소가 부족. 대부분 산소 분압 <b>0.1bar 아래</b>에서 의식 상실. 10m에서 0.18bar면 4m~수면 사이 BO가 불가피.</li>
+<li>수면에 가까울수록 압력 변화율이 크다: 30→20m는 1/4 감소, <b>10→0m는 50% 감소</b>. 그래서 <b>마지막 10m가 가장 위험</b>.</li>
+<li>세이프티는 최소 <b>-10m</b>에서 만나고, 깊은 다이빙은 마지막 <b>1/3</b> 구간을 함께.</li>
+<li><b>감압병(DCS)</b>은 프리다이버도 걸릴 수 있다(스쿠버만이 아님). 증상: 오래가는 피로, 팔다리·몸통 통증, 어지럼, 숨참·통증, 저림·마비. 버디가 볼 수 있는 징후: 얼룩덜룩한 발진, 관절 문지르기, 비틀거림, 기침 발작, 쓰러짐, 의식 없음. → 즉시 중단, 가능하면 순산소, 병원.</li>
+<li>수면 휴식 경험칙(30m까지): <b>다이빙 시간 × 2</b>. 30~55m: 수심(m) ÷ 5분. 55m보다 깊으면 24시간에 1회(AIDA4).</li>
+</ul>
+
+</details>
+<details class="ch"><summary>8장 · 훈련 개념</summary>
+<ul>
+<li>표 3종류: ① <b>워밍업 표</b>(최대 기록 1회 준비) ② <b>CO2 표</b>(CO2 내성) ③ <b>O2 표</b>(저산소 적응, <b>익스트림</b> 영역 — AIDA3에서는 앞의 두 개만 배움). 남의 표를 베끼지 말고 내 표를 만든다.</li>
+<li>워밍업 목적: 몸과 마음을 "프리다이빙 모드"로, <b>이완</b>, <b>MDR 유도</b>.</li>
+<li>시각화: 실제 다이빙과 몸·마음 반응이 비슷. 워밍업 없이 시각화만으로 최대 기록을 하는 사람도 있다.</li>
+<li><b>"다리 아끼기"</b>: 다리에 젖산이 쌓이면 "무거운 다리" → 워밍업은 <b>FIM</b>으로 최소한의 힘만.</li>
+<li>STA 워밍업은 시간 대신 <b>첫 수축</b>을 기준으로(그날 컨디션 반영). 버디가 표를 들고 안내.</li>
+<li>CWT 워밍업 예: FIM -10m(또는 NB) → NB에서 30초 행 → NB에서 첫 수축까지 행 → 5분 휴식 → 최대. 최대 전 휴식 최소 4~5분.</li>
+<li><b>CO2 표</b>: 숨 참는 동안 CO2가 점점 쌓이도록. 쉬는 시간은 산소 회복엔 충분, CO2 배출엔 부족 → <b>저산소 상태는 만들지 않는다.</b></li>
+<li>CO2 표 설계 원칙: ① <b>숨 참기 시간은 고정, 쉬는 시간을 줄인다</b> ② 숨 참기 = <b>최대 STA의 약 50%</b>(예: 3분20초 → 1분40초) ③ STA는 <b>8회</b>, DYN은 <b>20회</b>(활동량 많아 CO2가 더 생김).</li>
+<li>시간 대신 <b>호흡 횟수·걸음 수</b>로 세면 더 정확(예: 8회 숨→2분, 7회 숨→2분…). 워킹 압니아: 10걸음 숨, 30걸음 참기.</li>
+<li>O2와 CO2 훈련은 <b>섞지 않는다</b>. 물속 훈련은 반드시 <b>한 명은 다이빙, 한 명은 지켜보기</b>. 혼자 할 땐 물 밖에서만.</li>
+<li>O2 표(저산소 내성)는 레크리에이션이 아닌 익스트림. 반복적인 저산소·LMC·BO는 얻는 게 없다.</li>
+</ul>
+
+</details>
+<details class="ch"><summary>9장 · 포유류 잠수 반응(MDR)</summary>
+<ul>
+<li>MDR은 여러 자극 → 여러 반응의 조합. 자극 하나 → 반응 하나인 "반사(dive reflex)"가 아니다.</li>
+<li>반응 5가지: <b>말초혈관 수축, 서맥, 비장 효과, 혈액 이동(블러드 시프트), 대사 저하</b>.</li>
+<li>자극 4가지: <b>숨 참기(CO2 상승), 물에 잠김, 압력 증가(RV 이하 폐용적), 차가운 온도</b>.</li>
+<li>효과 3가지: ① <b>산소 절약</b> ② <b>산소를 효율적으로 사용</b> ③ <b>폐 압착 예방</b>(블러드 시프트 없으면 약 25~35m가 한계).</li>
+<li><b>말초혈관 수축</b>: 팔다리 혈관이 좁아져 피가 몸통·뇌로 모임. 대신 팔다리에 <b>젖산</b>이 쌓여 다리가 무거워짐. 그래서 최대 기록 전 충분한 휴식(4분+).</li>
+<li><b>서맥</b>: 성인 기준 분당 60회 미만. 일반인 10~25%, 훈련된 프리다이버 <b>50%</b>까지 감소. <b>얼굴만 물에 담가도</b> 시작 → 찬물에 얼굴 담그기로 미리 유도.</li>
+<li><b>비장 효과</b>: 비장이 수축해 저장된 적혈구를 방출 → 산소 운반 능력↑.</li>
+<li><b>블러드 시프트(혈액 보상)</b>: RV보다 깊어지면 폐포 주변 혈관이 피로 부풀어 줄어든 공기 자리를 채움(오렌지 비유: 과육=공기, 껍질=혈관). 폐 속 음압을 막아 폐 압착 예방. 1962년 마이오르카 -50m, 1974년 마욜 연구로 발견.</li>
+<li>블러드 시프트는 "공짜 티켓"이 아니다. 몇 달~몇 년 걸려 발달 → 조금씩 깊이 늘리기, 가슴 불편하면 바로 중단.</li>
+<li><b>대사 저하</b>: 소화 등 모든 대사가 느려짐 → 산소 절약. 위의 음식을 토할 수 있음, 오래 있으면 추위·저체온.</li>
+<li>MDR은 사람에게 원래 약하지만 <b>훈련하면 강하고 빨라진다</b>. 워밍업의 주된 이유.</li>
+<li><b>침수 이뇨</b>: 말초혈관 수축으로 몸통에 피가 몰림 → 몸이 수분 과다로 착각 → 소변 생성 → <b>탈수</b> 위험 → 다이빙 전·중·후 물 많이 마시기.</li>
+</ul>
+
+</details>
+<details class="ch"><summary>10장 · 프리다이버 행동 수칙</summary>
+<ul>
+<li>주변을 살피기 · 긴 핀 조심하기 · 해양생물 배려하기</li>
+<li>바다에서 아무것도 가져오지 않고, 아무것도 남기지 않기</li>
+<li>다이빙 장소 존중하기 · 모범 되기</li>
+</ul>
+
+</details>
+<details class="ch"><summary>실기 기준 · AIDA3 수료 조건</summary>
+<table>
+<tr><th>구분</th><th>기준</th></tr>
+<tr><td>이론</td><td>필기 75% 이상</td></tr>
+<tr><td>수영장</td><td>STA <b>2분 45초</b>(워밍업 후), DYNB <b>55m</b>, 55m 버디, DYN CO2 표(최소 20랩) 설계·수행, STA CO2 표 설계, DYNB 중성부력 설정, LMC·BO 구조</td></tr>
+<tr><td>바다</td><td>CWTB <b>24m</b>(수온 12°C 미만이면 21m, 최대 30m), 프렌젤, 프리폴, 랜야드 퀵릴리즈 조작, 15m에서 버디 3회 이상</td></tr>
+<tr><td>구조·자가구조</td><td>10~15m 상승 중 BO 구조 → 수면 BTT, <b>15m에서 팔로만 상승</b>(다리 쥐 가정, 줄은 방향만), <b>10m에서 마스크 벗고 상승</b>, 의식 있는 다이버 <b>50m 토잉</b></td></tr>
+<tr><td>장비</td><td>랜야드 필수, 모노핀 금지</td></tr>
+</table>
+
+</details></section>
+<section id="num"><div class="card"><h2>숫자 암기표</h2>
+<table>
+<tr><th>숫자</th><th>의미</th></tr>
+<tr><td>75% · 재시험 1회</td><td>필기 합격 기준 / 떨어지면 한 번 더</td></tr>
+<tr><td>만 18세 (16~17세 보호자 동의)</td><td>AIDA3 등록 나이</td></tr>
+<tr><td>이론 3 · 수영장 2 · 바다 4</td><td>최소 세션 수 (바다는 2일 이상, 전체 3일 이상)</td></tr>
+<tr><td>수영장 8:1 / 바다 4:1</td><td>학생:강사 비율 (보조강사 있으면 12:1 / 6:1)</td></tr>
+<tr><td>수영장 5m · 바다 30m</td><td>최대 수심</td></tr>
+<tr><td>STA 2:45 · DYNB 55m · CWTB 24m</td><td>수료 기록 (수온 12°C 미만이면 CWTB 21m)</td></tr>
+<tr><td>15m 버디 · 10~15m 구조 · 50m 토잉</td><td>바다 안전 기술</td></tr>
+<tr><td>15m 팔로만 · 10m 노마스크</td><td>자가구조 상승</td></tr>
+<tr><td>60~80초</td><td>보통 사람의 숨 참기</td></tr>
+<tr><td>체중의 8% · 여 4~5L · 남 5~6L</td><td>혈액량</td></tr>
+<tr><td>적혈구 36~54%</td><td>혈액 속 적혈구 비율</td></tr>
+<tr><td>96~99%</td><td>평소 산소포화도 (96% 미만이면 다이빙 금지)</td></tr>
+<tr><td>86% 미만 / 45~50%</td><td>심한 저산소 / 의식 상실</td></tr>
+<tr><td>500mL · 분당 10~20회</td><td>일회 호흡량(TV)</td></tr>
+<tr><td>VC 3~5L</td><td>성인 폐활량</td></tr>
+<tr><td>FRC ≈ TLC의 50%</td><td>편히 내쉰 뒤 남은 공기</td></tr>
+<tr><td>RV ≈ TLC의 25%</td><td>최대로 내쉰 뒤 남은 공기</td></tr>
+<tr><td>최소 1주일</td><td>폐 압착 후 다이빙 중단 (+ 전문의 허락)</td></tr>
+<tr><td>NB -10m ~ -20m</td><td>-10m보다 얕게 금지, -20m보다 깊으면 하강 힘듦</td></tr>
+<tr><td>목표 수심의 1/3</td><td>중성부력 설정 경험칙 (30m 이하 다이빙은 -10m)</td></tr>
+<tr><td>NB + 4킥</td><td>프리폴 시작 연습 (너무 느려지면 +2킥)</td></tr>
+<tr><td>0.21bar</td><td>수면 공기의 산소 분압</td></tr>
+<tr><td>0.16~1.6bar</td><td>사람에게 안전한 산소 분압 범위</td></tr>
+<tr><td>0.1bar</td><td>대부분 의식을 잃는 폐포 산소 분압</td></tr>
+<tr><td>10→0m 50% · 30→20m 25%</td><td>압력 감소율 (마지막 10m가 가장 위험)</td></tr>
+<tr><td>-10m · 마지막 1/3</td><td>세이프티가 만나는 최소 수심 / 깊은 다이빙 동행 구간</td></tr>
+<tr><td>다이빙 시간 × 2</td><td>30m까지 수면 휴식</td></tr>
+<tr><td>수심 ÷ 5 (분)</td><td>30~55m 수면 휴식 (AIDA4)</td></tr>
+<tr><td>24시간 1회</td><td>55m보다 깊은 다이빙 (AIDA4)</td></tr>
+<tr><td>최대 STA의 50%</td><td>CO2 표 숨 참기 시간</td></tr>
+<tr><td>STA 8회 · DYN 20회</td><td>CO2 표 횟수</td></tr>
+<tr><td>최소 4분</td><td>최대 기록 전 휴식 (워밍업 표 기준)</td></tr>
+<tr><td>26~27°C</td><td>에어컨 쓸 때 권장 온도</td></tr>
+<tr><td>60bpm 미만</td><td>서맥 기준 (일반인 10~25%, 숙련자 50% 감소)</td></tr>
+<tr><td>25~35m</td><td>블러드 시프트 없을 때 다칠 수 있는 수심</td></tr>
+<tr><td>1962 / 1974</td><td>마이오르카 -50m / 마욜 연구로 블러드 시프트 발견</td></tr>
+</table>
+
+</div></section>
+<section id="rev"><p style="font-size:14px;color:#666;margin:0 0 10px">교재 부록 A의 공식 복습문제 정답을 옮겼어요. 문제를 보고 답을 떠올린 다음 눌러서 확인하세요.</p>
+
+<details class="qa"><summary>Q1. 혈액의 기능은?</summary><div class="ans">가스·영양분·노폐물·호르몬·체열 운반, 염증으로부터 보호, 혈액 산도(pH)와 수분 균형 조절.</div></details>
+<details class="qa"><summary>Q2. 청색증이란? 왜 버디에게 알려야 하나?</summary><div class="ans">"파란 입술". 입술 피부가 가장 얇아 산소 감소로 인한 혈액 색 변화가 잘 보인다. 저체온일 때도 생긴다. 본인은 자기 청색증을 느낄 수 없으니 버디가 알려줘야 한다.</div></details>
+<details class="qa"><summary>Q3. 확산을 정의하면?</summary><div class="ans">가스가 농도 높은 곳에서 낮은 곳으로 움직이려는 자연스러운 경향.</div></details>
+<details class="qa"><summary>Q4. 정맥·동맥과 폐순환의 특수한 경우는?</summary><div class="ans">정맥은 심장으로, 동맥은 심장에서 장기로 피를 나른다. 폐동맥은 산소가 적은 피를 심장에서 폐로, 폐정맥은 산소가 많은 피를 폐에서 심장으로 나른다.</div></details>
+<details class="qa"><summary>Q5. 과호흡은 산소포화도는 바꾸지 않고 CO2만 낮춘다. O/X?</summary><div class="ans">O (맞음).</div></details>
+<details class="qa"><summary>Q6. 압력 변화 감각과 통증은 다르다. 설명하면?</summary><div class="ans">압력을 느끼는 건 효율적인 이퀄에 꼭 필요하다. 다이빙 중 통증은 항상 경보 신호이며 바로 하강을 멈춰야 한다.</div></details>
+<details class="qa"><summary>Q7. 바닷물로 부비강을 세척하면 안 되는 이유는?</summary><div class="ans">바닷물은 깨끗한 소금물이 아니라 오염물과 미생물이 있어 감염을 일으킬 수 있다. 조금 들어가는 건 괜찮지만 최대한 피한다.</div></details>
+<details class="qa"><summary>Q8. 어떤 이퀄 방법이든 가장 중요한 것은?</summary><div class="ans">이퀄에 필요한 근육만 쓰고 나머지는 이완. 목·턱 긴장은 이퀄 실패로 이어지는 흔한 실수.</div></details>
+<details class="qa"><summary>Q9. 압착은 어떻게 예방하나?</summary><div class="ans">압력 변화를 이퀄해서 조직·기관에 작용하는 압력 차이를 없앤다. 압착이 생기면 "Stay dry, see doctor".</div></details>
+<details class="qa"><summary>Q10. 고막 천공의 증상은?</summary><div class="ans">날카로운 통증, 어지럼(현훈), 방향감 상실.</div></details>
+<details class="qa"><summary>Q11. 중이 압착은 어떻게 생기나?</summary><div class="ans">이퀄에 실패했는데 하강을 멈추지 않으면 피와 체액이 중이로 밀려 들어가 일부 또는 전부를 채운다.</div></details>
+<details class="qa"><summary>Q12. 중이 압착이 의심되면 왜 꼭 병원에 가야 하나?</summary><div class="ans">중이에 찬 액체가 중이염 같은 감염 위험이 크기 때문.</div></details>
+<details class="qa"><summary>Q13. 리버스 블록일 때 이퀄하면 안 되는 이유는?</summary><div class="ans">이퀄은 공기를 더 밀어 넣는데, 리버스 블록은 이미 공기가 너무 많은 상태다. 줄을 따라 최대한 천천히 올라오면 갇힌 공기가 결국 빠진다.</div></details>
+<details class="qa"><summary>Q14. 교대성 현훈(AV)이란?</summary><div class="ans">주로 상승 때 한쪽 귀의 압력이 다른 쪽보다 늦게(덜) 빠지면서 뇌가 몸이 움직인다고 착각하는 것. 눈 떨림, 구역, 구토, 이명, 먹먹함.</div></details>
+<details class="qa"><summary>Q15. 잘 맞는 후드가 후드 압착의 원인이 되는 이유는?</summary><div class="ans">후드가 꽉 밀착되면 외이도와 후드 사이 공기가 하강 때 압축돼 고막이나 외이도를 다치게 할 수 있다.</div></details>
+<details class="qa"><summary>Q16. 하강 중 부비강이 막히면?</summary><div class="ans">줄을 잡고 바로 하강을 멈추고, 이완하고 다시 이퀄. 통증이 안 사라지면 다이빙을 중단하고 조심히 상승.</div></details>
+<details class="qa"><summary>Q17. 부비강 막힘을 피하는 최고의 조언은?</summary><div class="ans">감기·코막힘일 때 다이빙하지 않기, 물 충분히 마시기.</div></details>
+<details class="qa"><summary>Q18. 잔기량(RV)이란?</summary><div class="ans">최대로 내쉰 뒤 폐에 남은 공기. 평균 총 폐용량의 25%.</div></details>
+<details class="qa"><summary>Q19. 폐활량을 늘리는 가장 효율적인 방법은?</summary><div class="ans">① 원 풀 브레스(2단계 들숨)를 제대로 해서 폐를 꽉 채우기 ② 횡격막 스트레칭으로 잔기량을 줄여 폐활량 늘리기.</div></details>
+<details class="qa"><summary>Q20. 실패 수심이란?</summary><div class="ans">잔기량에 도달해 일반적인 이퀄이 더 이상 안 되는 수심.</div></details>
+<details class="qa"><summary>Q21. 폐 손상을 의심할 증상 2가지 이상?</summary><div class="ans">안 없어지는 가슴 답답함, 쌕쌕거림, 계속 숨이 찬 느낌, 기침에 분홍 거품, 안 없어지는 피로.</div></details>
+<details class="qa"><summary>Q22. 폐 압착을 피하는 조언 4가지 이상?</summary><div class="ans">자기 인식으로 다이빙, 이완 안 되면 다이빙 안 함, 떨리면 중단, 늑간근·횡격막 스트레칭, 바닥에서 앞으로 구르는 턴, 수심에 천천히 적응.</div></details>
+<details class="qa"><summary>Q23. 너무 무거운 건 위험하지만 너무 가벼운 것도 안전하지 않은 이유는?</summary><div class="ans">너무 가벼우면 하강 초반에 부력과 싸우느라 지나치게 힘을 쓴다.</div></details>
+<details class="qa"><summary>Q24. "중성부력을 얕게 잡는 것이 좋은 기술을 대신하지 못한다"를 설명하면?</summary><div class="ans">NB를 너무 얕게 잡는 건 웨이트 과다. 하강이 힘들면 덕다이브를 연습해야지 웨이트만 늘리는 건 무책임하고 위험하다.</div></details>
+<details class="qa"><summary>Q25. 프리폴 중 균형을 잃으면 어떻게 바로잡나?</summary><div class="ans">머리를 몸 축에, 곧은 자세, 벨트 웨이트 고르게, 적당한 속도, 몸 이완, 한 손으로 줄을 스치며 내려가기 등.</div></details>
+<details class="qa"><summary>Q26. 블랙아웃이 훈련 효과가 없는 이유는?</summary><div class="ans">블랙아웃을 반복한다고 뇌가 저산소 환경에 적응하지 않는다.</div></details>
+<details class="qa"><summary>Q27. 뇌 허혈이 생기는 예는?</summary><div class="ans">저혈압, 너무 빨리 일어남, 과호흡으로 인한 뇌혈관 수축, 목이 꽉 끼는 후드, 목 졸림, 슈트 속 공기주머니 등.</div></details>
+<details class="qa"><summary>Q28. 프리다이빙에서 얕은 물 블랙아웃의 뜻은?</summary><div class="ans">다이빙 끝 무렵 저산소로 의식을 잃는 것. 상승 때 수압 변화가 저산소를 일으키거나 심하게 만든다.</div></details>
+<details class="qa"><summary>Q29. 감압병은 압축공기를 마시는 다이버에게만 생긴다. O/X?</summary><div class="ans">X. 프리다이버도 걸릴 수 있다. 바닥 시간뿐 아니라 수심과 상승 속도도 영향을 준다.</div></details>
+<details class="qa"><summary>Q30. "다리 아끼기"란?</summary><div class="ans">CWT의 한계 요인 중 하나는 다이빙 끝 무렵 다리 근육의 젖산 내성("무거운 다리"). 그래서 워밍업은 최소한의 힘(FIM)으로 한다.</div></details>
+<details class="qa"><summary>Q31. CO2 표의 원리는?</summary><div class="ans">숨 참을 때마다 CO2가 점점 쌓이게 짠 표. 쉬는 시간은 산소를 회복하기엔 충분하지만 CO2를 다 내보내기엔 부족하다. CO2 내성을 몸과 마음 모두 키우는 게 목적.</div></details>
+<details class="qa"><summary>Q32. 포유류 잠수 반응(MDR)이란?</summary><div class="ans">여러 자극이 일련의 반응을 일으키는 조합. 산소 절약, 산소의 효율적 사용, 폐 압착 예방을 돕는다.</div></details>
+<details class="qa"><summary>Q33. 깊은 다이빙에 블러드 시프트가 중요한 이유는?</summary><div class="ans">잔기량보다 깊어져도 폐포 혈관이 피로 차올라 폐가 더 압축될 수 있기 때문.</div></details>
+
+</section>
+<section id="word"><div class="card"><div class="fc" id="fc">시작</div><div class="ctrl" style="justify-content:center;margin-top:10px"><button id="fprev">◀ 이전</button><button class="btn" id="fflip">뒤집기</button><button id="fnext">다음 ▶</button></div></div><div class="card">
+<table>
+<tr><th>영어</th><th>뜻</th></tr>
+<tr><td>Cyanosis</td><td>청색증 (파란 입술)</td></tr>
+<tr><td>Haemoglobin</td><td>헤모글로빈 (적혈구 속 산소 운반 단백질)</td></tr>
+<tr><td>Diffusion / Gradient</td><td>확산 / 농도 차(기울기)</td></tr>
+<tr><td>Artery / Vein</td><td>동맥 / 정맥</td></tr>
+<tr><td>Hypocapnia</td><td>저탄산혈증 (CO2가 낮음)</td></tr>
+<tr><td>Hypercapnia</td><td>고탄산혈증 (CO2가 높음)</td></tr>
+<tr><td>Bohr effect</td><td>보어 효과 (CO2↓ → 헤모글로빈이 산소를 덜 내놓음)</td></tr>
+<tr><td>Eustachian tube</td><td>유스타키오관 (중이 ↔ 비인두)</td></tr>
+<tr><td>Ostium</td><td>부비강 출구</td></tr>
+<tr><td>Frenzel / Valsalva</td><td>혀로 미는 이퀄 / 배로 미는 이퀄</td></tr>
+<tr><td>Grouper call</td><td>그루퍼 콜 (배에 힘 줄 때 목에서 나는 소리)</td></tr>
+<tr><td>Barotrauma / Squeeze</td><td>압착 (압력 손상)</td></tr>
+<tr><td>Reverse block</td><td>리버스 블록 (상승 때 공기가 못 빠짐)</td></tr>
+<tr><td>Alternobaric vertigo (AV)</td><td>교대성 현훈 (양쪽 귀 압력 차이로 어지러움)</td></tr>
+<tr><td>Decongestant</td><td>충혈제거제 (코막힘약)</td></tr>
+<tr><td>TV / IRV / ERV</td><td>일회 호흡량 / 흡기 예비량 / 호기 예비량</td></tr>
+<tr><td>VC / FRC / RV / TLC</td><td>폐활량 / 기능적 잔기량 / 잔기량 / 총 폐용량</td></tr>
+<tr><td>Failure depth</td><td>실패 수심 (RV 도달, 일반 이퀄 불가)</td></tr>
+<tr><td>Packing</td><td>패킹 (공기를 억지로 더 밀어 넣기, AIDA4)</td></tr>
+<tr><td>Uddiyana bandha</td><td>우디야나 반다 (횡격막 스트레칭)</td></tr>
+<tr><td>Neutral buoyancy (NB)</td><td>중성부력</td></tr>
+<tr><td>Free fall</td><td>프리폴 (자유 하강)</td></tr>
+<tr><td>Sagittal / Frontal plane</td><td>앞뒤 기울기 / 좌우 기울기</td></tr>
+<tr><td>Ischemia</td><td>허혈 (피가 덜 감)</td></tr>
+<tr><td>Partial pressure (pp)</td><td>분압</td></tr>
+<tr><td>Shallow water blackout</td><td>얕은 물 블랙아웃 (상승 마지막 구간 저산소)</td></tr>
+<tr><td>DCS</td><td>감압병</td></tr>
+<tr><td>Warm-up table</td><td>워밍업 표</td></tr>
+<tr><td>CO2 / O2 table</td><td>CO2 내성 표 / 저산소 내성 표</td></tr>
+<tr><td>Lactic acid</td><td>젖산</td></tr>
+<tr><td>MDR</td><td>포유류 잠수 반응</td></tr>
+<tr><td>Peripheral vasoconstriction</td><td>말초혈관 수축</td></tr>
+<tr><td>Bradycardia</td><td>서맥 (심박 감소)</td></tr>
+<tr><td>Spleen effect</td><td>비장 효과</td></tr>
+<tr><td>Blood shift</td><td>블러드 시프트 (혈액 이동)</td></tr>
+<tr><td>Hypo metabolism</td><td>대사 저하</td></tr>
+<tr><td>Immersion diuresis</td><td>침수 이뇨</td></tr>
+</table>
+</div></section>
+<div class="full" style="display:none"></div>
+</main>
+<footer><a href="https://pf.kakao.com/_metyn" target="_blank" rel="noopener">세부프리다이빙 연두쌤 카카오톡 채널 바로가기</a><br>개인 공부용 정리 자료입니다. 정확한 내용은 AIDA 공식 교재와 담당 강사 안내를 따르세요.</footer>
+<script>document.querySelectorAll(".keys li").forEach(l=>l.onclick=()=>l.classList.toggle("hide"));</script>
+<script>
+const Q=[{"c": "과정", "t": "s", "q": "AIDA3 필기시험 합격 기준은?", "o": ["60%", "70%", "75%", "80%"], "a": [2], "e": "75%. 떨어지면 같은 시험을 한 번 더 볼 수 있어요."}, {"c": "과정", "t": "m", "q": "(모두 고르시오) AIDA3 수료에 필요한 기록을 모두 고르시오.", "o": ["STA 2분 45초", "DYNB 55m", "CWTB 24m", "CWTB 30m", "DYNB 75m"], "a": [0, 1, 2], "e": "STA 2:45, DYNB 55m, CWTB 24m(수온 12°C 미만이면 21m). 30m는 최대 수심이에요."}, {"c": "과정", "t": "s", "q": "AIDA3 바다 세션의 최대 수심은?", "o": ["20m", "24m", "30m", "40m"], "a": [2], "e": "줄 길이나 장소로 최대 30m로 제한해요."}, {"c": "과정", "t": "m", "q": "(모두 고르시오) AIDA3 바다에서 해야 하는 자가구조·구조 기술을 모두 고르시오.", "o": ["15m에서 팔로만 상승(다리 쥐 가정)", "10m에서 마스크 벗고 상승", "의식 있는 다이버 50m 토잉", "20m에서 블랙아웃 구조", "모노핀으로 CWT"], "a": [0, 1, 2], "e": "BO 구조는 10~15m, 모노핀은 금지예요."}, {"c": "과정", "t": "s", "q": "(O/X) AIDA3 과정에서는 랜야드를 꼭 사용해야 하고 모노핀은 쓸 수 없다.", "o": ["맞음", "틀림"], "a": [0], "e": "랜야드 필수(세이프티 할 때 제외), 모노핀 금지."}, {"c": "과정", "t": "s", "q": "AIDA3 바다 세션 최소 횟수는?", "o": ["2회, 하루", "3회, 하루", "4회, 2일 이상", "6회, 3일 이상"], "a": [2], "e": "이론 3, 수영장 2, 바다 4(2일 이상). 전체 최소 3일."}, {"c": "과정", "t": "s", "q": "(O/X) 예전의 다른 단체 '크로스오버 표'는 지금도 유효하다.", "o": ["맞음", "틀림"], "a": [1], "e": "이제는 강사가 직접 평가하는 AIDA 크로스오버 평가로 대체됐어요."}, {"c": "생리", "t": "s", "q": "보통 사람이 최적 조건에서 숨을 참을 수 있는 시간은?", "o": ["20~30초", "60~80초", "2~3분", "4~5분"], "a": [1], "e": "교재 2장 첫 문장이에요."}, {"c": "생리", "t": "s", "q": "혈액은 성인 체중의 약 몇 %인가?", "o": ["3%", "8%", "15%", "25%"], "a": [1], "e": "여성 4~5L, 남성 5~6L."}, {"c": "생리", "t": "m", "q": "(모두 고르시오) 혈액의 기능을 모두 고르시오.", "o": ["가스·영양·노폐물·체열 운반", "염증으로부터 보호", "pH·수분 균형 조절", "폐활량 증가"], "a": [0, 1, 2], "e": "운반·보호·조절 세 가지."}, {"c": "생리", "t": "s", "q": "산소 대부분을 운반하는 것은?", "o": ["혈장", "백혈구", "헤모글로빈", "혈소판"], "a": [2], "e": "적혈구 속 철이 든 단백질이에요."}, {"c": "생리", "t": "s", "q": "(O/X) 숨 쉬는 상태에서 산소포화도가 96% 아래면 숨 참기나 다이빙을 하지 않는다.", "o": ["맞음", "틀림"], "a": [0], "e": "지쳤거나 아픈 상태예요."}, {"c": "생리", "t": "m", "q": "(모두 고르시오) 청색증(파란 입술)에 대해 옳은 것을 모두 고르시오.", "o": ["산소가 줄기 시작했다는 첫 경고다", "본인은 느낄 수 없어 버디가 알려줘야 한다", "추워서 생길 수도 있다", "생기면 바로 구조호흡을 해야 한다"], "a": [0, 1, 2], "e": "몇 번 숨 쉬면 사라져요. 위험 수준의 저산소를 뜻하진 않아요."}, {"c": "생리", "t": "s", "q": "확산의 정의로 옳은 것은?", "o": ["가스가 농도 낮은 곳에서 높은 곳으로 이동", "가스가 농도 높은 곳에서 낮은 곳으로 이동", "피가 심장에서 장기로 이동", "공기가 폐포에서 기관지로 이동"], "a": [1], "e": "농도 차가 클수록 빨라요."}, {"c": "생리", "t": "match", "q": "(짝 맞추기) 혈관과 설명을 연결하세요.", "pairs": [["동맥", "심장 → 장기 (보통 산소 많음)"], ["정맥", "장기 → 심장 (보통 산소 적음)"], ["폐동맥", "산소 적은 피를 심장 → 폐"], ["폐정맥", "산소 많은 피를 폐 → 심장"]], "e": "폐순환은 이름과 산소가 반대예요."}, {"c": "생리", "t": "s", "q": "(O/X) 과호흡은 산소포화도를 높이지는 않고 CO2만 낮춘다.", "o": ["맞음", "틀림"], "a": [0], "e": "교재 복습문제 정답이에요."}, {"c": "생리", "t": "m", "q": "(모두 고르시오) 과호흡이 위험한 이유를 모두 고르시오.", "o": ["경고 신호(CO2)가 늦게 온다", "뇌혈관이 수축해 뇌로 가는 피가 줄어든다", "MDR이 약해져 산소를 덜 아낀다", "보어 효과로 헤모글로빈이 산소를 조직에 덜 내놓는다", "산소포화도가 너무 올라간다"], "a": [0, 1, 2, 3], "e": "포화도는 그대로예요."}, {"c": "생리", "t": "s", "q": "보어 효과에서 CO2가 낮으면 어떻게 되나?", "o": ["헤모글로빈이 산소를 더 쉽게 놓는다", "헤모글로빈이 산소를 더 꽉 붙잡는다", "심박이 빨라진다", "폐활량이 늘어난다"], "a": [1], "e": "혈액이 알칼리성이 되면 산소를 조직에 덜 줘요."}, {"c": "생리", "t": "s", "q": "의식을 잃는 산소포화도는 대략?", "o": ["86%", "70%", "45%", "20%"], "a": [2], "e": "86% 미만은 심한 저산소, 45~50%면 의식 상실."}, {"c": "생리", "t": "order", "q": "(순서 맞추기) 숨 쉰 산소가 몸을 도는 순서대로 번호를 고르세요.", "items": ["공기를 들이마심", "폐포에서 혈액으로 확산", "헤모글로빈과 결합", "폐정맥으로 심장에 감", "온몸 조직으로 전달"], "e": "교재 2.3 산소의 여행."}, {"c": "이퀄", "t": "s", "q": "이퀄라이징이 필요한 곳은?", "o": ["외이", "중이", "내이", "달팽이관"], "a": [1], "e": "외이는 물로 차고, 내이는 액체라 필요 없어요."}, {"c": "이퀄", "t": "s", "q": "(O/X) 다이빙 중 귀에 압력이 느껴지는 건 정상이지만, 통증은 바로 하강을 멈추라는 신호다.", "o": ["맞음", "틀림"], "a": [0], "e": "압력감은 이퀄에 필요한 감각, 통증은 경보."}, {"c": "이퀄", "t": "s", "q": "귀와 부비강이 한 번에 이퀄되는 이유는?", "o": ["달팽이관 때문", "유스타키오관이 중이와 비인두를 잇기 때문", "고막이 유연해서", "외이가 물로 차서"], "a": [1], "e": "그래서 올바른 방법 하나로 둘 다 이퀄돼요."}, {"c": "이퀄", "t": "s", "q": "(O/X) 바닷물로 코·부비강을 씻는 것은 권장된다.", "o": ["맞음", "틀림"], "a": [1], "e": "오염물·세균으로 감염 위험이 커요."}, {"c": "이퀄", "t": "s", "q": "AIDA3부터 권장하는 이퀄 방법은?", "o": ["발살바", "프렌젤", "삼키기", "토인비"], "a": [1], "e": "발살바는 얕은 초급 다이빙용이에요."}, {"c": "이퀄", "t": "m", "q": "(모두 고르시오) 프렌젤을 제대로 하는 방법을 모두 고르시오.", "o": ["배는 완전히 이완", "압력은 혀(또는 볼)로", "목(성문)은 잠근다", "배에 힘을 줘서 민다"], "a": [0, 1, 2], "e": "배가 움직이면 발살바 섞인 거예요."}, {"c": "이퀄", "t": "s", "q": "깊은 곳에서 이퀄할 때 목에서 '꾸르륵' 소리(그루퍼 콜)가 나면?", "o": ["정상이다", "배에 힘이 들어갔다는 뜻이니 배를 풀고 다시 한다", "더 세게 민다", "바로 상승한다"], "a": [1], "e": "교재 3.3."}, {"c": "이퀄", "t": "s", "q": "어떤 이퀄 방법이든 가장 중요한 것은?", "o": ["최대한 세게 하기", "이퀄에 필요한 근육만 쓰고 나머지는 이완", "목을 뒤로 젖히기", "턱에 힘주기"], "a": [1], "e": "목·턱 긴장이 흔한 실수."}, {"c": "이퀄", "t": "s", "q": "후드를 쓸 때 외이에 공기가 남지 않게 하는 방법은?", "o": ["물속에서 후드를 세게 당긴다", "다이빙 전 관자놀이 쪽을 살짝 들어 물을 넣는다", "귀마개를 낀다", "후드를 더 꽉 조인다"], "a": [1], "e": "귀 위치에 작은 구멍을 뚫어도 돼요."}, {"c": "압착", "t": "s", "q": "(O/X) 이퀄이 안 되는 것 자체가 귀를 다치게 한다.", "o": ["맞음", "틀림"], "a": [1], "e": "안 되는데 계속 내려가서 다쳐요. 안 되면 멈추기."}, {"c": "압착", "t": "s", "q": "압착이 생기면 기억할 4단어는?", "o": ["Stop, think, act, ok", "Stay dry, see doctor", "Blow, tap, talk, breathe", "Surface, airways, face, equipment"], "a": [1], "e": "다 나을 때까지 물에 안 들어가요."}, {"c": "압착", "t": "m", "q": "(모두 고르시오) 고막 천공의 증상을 모두 고르시오.", "o": ["날카로운 통증", "어지럼(현훈)", "방향감 상실", "일시적 청력 저하", "입안의 쇠맛"], "a": [0, 1, 2, 3], "e": "쇠맛은 과호흡 증상이에요."}, {"c": "압착", "t": "s", "q": "중이 압착은 어떻게 생기나?", "o": ["상승 때 공기가 못 빠져서", "이퀄 실패 후 계속 내려가 피·체액이 중이로 들어가서", "후드가 너무 꽉 껴서", "바닷물을 마셔서"], "a": [1], "e": "감염 위험이 커서 꼭 병원."}, {"c": "압착", "t": "s", "q": "(O/X) 중이 압착이 의심되면 비행기 타는 것도 피해야 한다.", "o": ["맞음", "틀림"], "a": [0], "e": "압력 변화를 피하고 의사 허락 후 다이빙."}, {"c": "압착", "t": "s", "q": "리버스 블록이 생겼을 때 하면 안 되는 것은?", "o": ["줄 잡고 멈추기", "이퀄하기", "코 막고 삼키기", "천천히 상승"], "a": [1], "e": "이미 공기가 너무 많은데 더 밀어 넣는 꼴이에요."}, {"c": "압착", "t": "m", "q": "(모두 고르시오) 리버스 블록의 원인을 모두 고르시오.", "o": ["감기·코막힘", "덜 나은 기도 염증", "코막힘약(충혈제거제) 복용 후 다이빙", "원 풀 브레스"], "a": [0, 1, 2], "e": "약은 수압에서 더 빨리 대사돼 일찍 효과가 끝나요."}, {"c": "압착", "t": "s", "q": "교대성 현훈(AV)이 생기는 원인은?", "o": ["양쪽 귀의 압력이 다르게 빠져서", "산소가 부족해서", "CO2가 높아서", "폐가 눌려서"], "a": [0], "e": "주로 상승 때. 눈 떨림, 구역, 이명."}, {"c": "압착", "t": "s", "q": "후드 압착의 원인은?", "o": ["후드가 헐렁해서", "잘 맞는 후드가 외이도에 공기를 가둬서", "후드에 구멍이 있어서", "후드를 안 써서"], "a": [1], "e": "다이빙 전 귀에 물 채우기."}, {"c": "압착", "t": "s", "q": "하강 중 부비강이 막혀 아프면?", "o": ["더 세게 이퀄하며 계속 하강", "줄 잡고 멈추고 이완 후 다시 이퀄, 안 되면 중단", "빨리 상승", "코를 세게 푼다"], "a": [1], "e": "교재 복습문제."}, {"c": "압착", "t": "match", "q": "(짝 맞추기) 코를 풀었을 때 나온 것과 대처를 연결하세요.", "pairs": [["신선한 피", "부비강 손상 → 다이빙 중단"], ["검붉은 오래된 색", "예전 감염 흔적 → 조심하며 계속 가능"]], "e": "교재 4.5."}, {"c": "압착", "t": "s", "q": "부비강 막힘을 피하는 최고의 조언은?", "o": ["다이빙 전 코 세척", "감기·코막힘 때 다이빙 안 하기 + 물 충분히", "항히스타민 복용", "에어컨 켜고 자기"], "a": [1], "e": "약 먹으면서 다이빙도 금지예요."}, {"c": "압착", "t": "s", "q": "(O/X) 카팔라바티 같은 정화 호흡은 다이빙 직전에 하면 좋다.", "o": ["맞음", "틀림"], "a": [1], "e": "빠르고 깊은 호흡이라 과호흡이에요. 다이빙 직전엔 하지 않아요."}, {"c": "폐", "t": "match", "q": "(짝 맞추기) 폐 용적과 뜻을 연결하세요.", "pairs": [["TV", "편히 쉬는 한 번의 숨 (약 500mL)"], ["VC", "최대로 내쉰 뒤 최대로 들이쉴 수 있는 양"], ["FRC", "편히 내쉰 뒤 남은 공기"], ["RV", "최대로 내쉰 뒤 남은 공기"], ["TLC", "폐가 담을 수 있는 전체 공기"]], "e": "VC=IRV+TV+ERV, FRC=ERV+RV, TLC=VC+RV."}, {"c": "폐", "t": "s", "q": "VC(폐활량)를 구하는 식은?", "o": ["ERV+RV", "IRV+TV+ERV", "VC+RV", "TV+RV"], "a": [1], "e": "FRC=ERV+RV, TLC=VC+RV."}, {"c": "폐", "t": "s", "q": "잔기량(RV)은 총 폐용량의 평균 약 몇 %인가?", "o": ["10%", "25%", "50%", "75%"], "a": [1], "e": "FRC는 약 50%."}, {"c": "폐", "t": "s", "q": "(O/X) FRC 다이빙은 '빈 폐' 다이빙이다.", "o": ["맞음", "틀림"], "a": [1], "e": "FRC에도 총 폐용량의 약 50%가 남아 있어요. AIDA에는 빈 폐 다이빙이 없어요."}, {"c": "폐", "t": "m", "q": "(모두 고르시오) 폐활량을 늘리는 가장 효율적인 방법을 모두 고르시오.", "o": ["원 풀 브레스(2단계 들숨) 제대로 하기", "횡격막 스트레칭으로 잔기량 줄이기", "패킹으로 전폐 스트레칭", "과호흡 연습"], "a": [0, 1], "e": "패킹은 폐 손상과 관련돼 금지."}, {"c": "폐", "t": "s", "q": "실패 수심(Failure depth)이란?", "o": ["블랙아웃이 오는 수심", "잔기량에 도달해 일반 이퀄이 더 이상 안 되는 수심", "중성부력 수심", "프리폴이 시작되는 수심"], "a": [1], "e": "교재 5.2."}, {"c": "폐", "t": "m", "q": "(모두 고르시오) 폐 압착을 의심할 증상을 모두 고르시오.", "o": ["안 없어지는 가슴 답답함", "쌕쌕거리는 숨소리", "기침에 분홍 거품", "안 없어지는 피로", "손끝 저림"], "a": [0, 1, 2, 3], "e": "손끝 저림은 과호흡 증상."}, {"c": "폐", "t": "m", "q": "(모두 고르시오) 폐 압착이 의심될 때 올바른 대처를 모두 고르시오.", "o": ["즉시 다이빙 중단", "기침은 한 번만 하고 손바닥에 뱉어 확인", "천천히 얕게 숨 쉬기", "가능하면 순산소", "버디 대신 줄을 끌어올려 세션 마무리 돕기"], "a": [0, 1, 2, 3], "e": "세션 마무리도 돕지 않아요. 최소 1주일 중단 + 병원."}, {"c": "폐", "t": "s", "q": "폐 압착 후 최소 다이빙 중단 기간은?", "o": ["하루", "3일", "1주일", "1년"], "a": [2], "e": "그리고 전문의 허락을 받아야 해요."}, {"c": "폐", "t": "m", "q": "(모두 고르시오) 폐 압착을 피하는 방법을 모두 고르시오.", "o": ["이완 안 되면 다이빙 안 하기", "추워서 떨리면 중단", "바닥에서 앞으로 구르는 턴", "천천히 수심 늘리기", "낙하산 턴"], "a": [0, 1, 2, 3], "e": "낙하산 턴처럼 몸을 여는 동작은 피해요."}, {"c": "폐", "t": "s", "q": "횡격막을 스트레칭하는 요가 기법은?", "o": ["카팔라바티", "우디야나 반다", "네티", "SISA"], "a": [1], "e": "완전히 내쉬고 목 잠그고 배꼽을 척추 쪽·위로."}, {"c": "부력", "t": "s", "q": "아르키메데스 원리는?", "o": ["압력이 높을수록 부피가 줄어든다", "잠긴 물체는 밀어낸 물의 무게만큼 뜨는 힘을 받는다", "기체 압력은 분압의 합이다", "가스는 농도 낮은 쪽으로 이동한다"], "a": [1], "e": "보일=부피, 돌턴=분압."}, {"c": "부력", "t": "s", "q": "(O/X) 너무 가벼운 웨이트는 항상 안전하다.", "o": ["맞음", "틀림"], "a": [1], "e": "하강 초반 부력과 싸우느라 힘을 지나치게 써요."}, {"c": "부력", "t": "s", "q": "중성부력을 잡는 경험칙은?", "o": ["목표 수심의 1/2", "목표 수심의 1/3", "항상 -5m", "항상 -20m"], "a": [1], "e": "30m보다 얕은 다이빙은 -10m로."}, {"c": "부력", "t": "s", "q": "중성부력을 -10m보다 얕게 잡으면?", "o": ["하강이 힘들어진다", "상승이 힘들어져 위험하다", "프리폴이 빨라진다", "아무 문제 없다"], "a": [1], "e": "-20m보다 깊으면 하강이 힘들어요."}, {"c": "부력", "t": "s", "q": "(O/X) 하강이 힘들면 웨이트를 더 차서 중성부력을 얕게 잡으면 된다.", "o": ["맞음", "틀림"], "a": [1], "e": "덕다이브 기술을 연습해야 해요. 웨이트 과다는 위험."}, {"c": "부력", "t": "order", "q": "(순서 맞추기) 중성부력 찾기 순서대로 번호를 고르세요.", "items": ["FIM으로 예상 수심까지 내려간다", "엄지·검지 OK 모양으로 줄을 감싸고 다른 손을 놓는다", "몸을 완전히 푼다", "10부터 1까지 센다", "움직임에 따라 한 팔 길이씩 조정"], "e": "교재 6.2."}, {"c": "부력", "t": "s", "q": "프리폴 중 머리 위치는?", "o": ["아래(바닥)를 본다", "몸 축과 일직선", "뒤로 젖힌다", "옆으로 돌린다"], "a": [1], "e": "아래를 보면 바나나 자세 → 낙하산 자세로 느려져요."}, {"c": "부력", "t": "s", "q": "프리폴 시작 연습: NB까지 킥 수를 센 뒤 몇 킥 더 차나?", "o": ["1킥", "2킥", "4킥", "10킥"], "a": [2], "e": "한쪽 다리 기준 4킥. 너무 느려지면 다음엔 2킥 추가."}, {"c": "부력", "t": "s", "q": "프리폴 중 좌우로 계속 기울어지는 가장 흔한 원인은?", "o": ["웨이트가 한쪽에 치우침", "머리를 숙임", "이퀄 실패", "핀이 짧음"], "a": [0], "e": "원인을 고치는 게 우선이에요."}, {"c": "저산소", "t": "s", "q": "(O/X) 블랙아웃을 반복하면 뇌가 저산소에 적응해 기록이 좋아진다.", "o": ["맞음", "틀림"], "a": [1], "e": "블랙아웃은 훈련 효과가 전혀 없어요."}, {"c": "저산소", "t": "match", "q": "(짝 맞추기) 용어와 뜻을 연결하세요.", "pairs": [["저산소증(Hypoxia)", "피 속 산소가 부족"], ["허혈(Ischemia)", "산소는 괜찮지만 피가 덜 감"], ["LMC", "가벼운 뇌 저산소 (수면에서 떨림)"], ["SWB", "상승 마지막 구간 압력 변화로 인한 BO"]], "e": "교재 7장."}, {"c": "저산소", "t": "m", "q": "(모두 고르시오) 뇌 허혈이 생길 수 있는 예를 모두 고르시오.", "o": ["갑자기 일어남", "목이 꽉 끼는 후드", "과호흡으로 뇌혈관 수축", "슈트 속 공기주머니 압박", "원 풀 브레스"], "a": [0, 1, 2, 3], "e": "교재 복습문제."}, {"c": "저산소", "t": "s", "q": "돌턴의 법칙은?", "o": ["혼합기체 전체 압력 = 각 기체 분압의 합", "압력과 부피는 반비례", "잠긴 물체는 뜨는 힘을 받는다", "가스는 농도 차로 이동"], "a": [0], "e": "공기: 산소 분압 0.21bar."}, {"c": "저산소", "t": "s", "q": "사람에게 안전한 산소 분압 범위는?", "o": ["0.05~0.5bar", "0.16~1.6bar", "0.21~2.1bar", "1~3bar"], "a": [1], "e": "대부분 0.1bar 아래에서 의식을 잃어요."}, {"c": "저산소", "t": "s", "q": "프리다이빙에서 '얕은 물 블랙아웃'의 뜻은?", "o": ["수영장에서 생긴 BO", "다이빙 끝 무렵 상승 중 압력 변화로 심해진 저산소 BO", "얕은 곳에서 과호흡한 뒤의 BO", "수면에서의 LMC"], "a": [1], "e": "수영장 BO를 뜻하는 게 아니에요."}, {"c": "저산소", "t": "s", "q": "압력이 50% 줄어드는 구간은?", "o": ["30m → 20m", "20m → 10m", "10m → 0m", "40m → 30m"], "a": [2], "e": "그래서 마지막 10m가 가장 위험해요."}, {"c": "저산소", "t": "s", "q": "AIDA 기준 세이프티가 다이버를 만나는 최소 수심은?", "o": ["-5m", "-10m", "-15m", "바닥"], "a": [1], "e": "깊은 다이빙은 마지막 1/3을 함께."}, {"c": "저산소", "t": "s", "q": "(O/X) 감압병은 스쿠버처럼 압축공기를 마시는 다이버에게만 생긴다.", "o": ["맞음", "틀림"], "a": [1], "e": "프리다이버도 걸릴 수 있어요."}, {"c": "저산소", "t": "m", "q": "(모두 고르시오) 버디가 볼 수 있는 감압병 징후를 모두 고르시오.", "o": ["얼룩덜룩한 발진", "관절 문지르기", "비틀거림", "기침 발작", "청색증"], "a": [0, 1, 2, 3], "e": "쓰러짐·의식 없음도 징후예요."}, {"c": "저산소", "t": "s", "q": "30m까지 다이빙할 때 수면 휴식 경험칙은?", "o": ["다이빙 시간과 같게", "다이빙 시간 × 2", "다이빙 시간 × 3", "수심 ÷ 5분"], "a": [1], "e": "예: 2분 다이빙 → 4분 휴식. 30~55m는 수심÷5분(AIDA4)."}, {"c": "훈련", "t": "match", "q": "(짝 맞추기) 표와 목적을 연결하세요.", "pairs": [["워밍업 표", "최대 기록 1회를 위한 준비"], ["CO2 표", "CO2 내성 키우기"], ["O2 표", "저산소 적응 (익스트림 영역)"]], "e": "AIDA3에서는 앞의 두 개를 배워요."}, {"c": "훈련", "t": "s", "q": "CWT 워밍업 다이빙은 어떤 종목으로 하나?", "o": ["CWT", "DYN", "FIM", "CNF"], "a": [2], "e": "'다리 아끼기': 젖산을 최소로."}, {"c": "훈련", "t": "s", "q": "STA 워밍업에서 시간 대신 쓰기 좋은 기준은?", "o": ["첫 수축", "심박수", "손끝 저림", "시야"], "a": [0], "e": "그날 컨디션에 맞게 조절돼요."}, {"c": "훈련", "t": "m", "q": "(모두 고르시오) CO2 표 설계 원칙으로 옳은 것을 모두 고르시오.", "o": ["숨 참기 시간은 고정, 쉬는 시간을 줄인다", "숨 참기 = 최대 STA의 약 50%", "STA는 8회, DYN은 20회", "저산소 상태가 될 때까지 참는다"], "a": [0, 1, 2], "e": "CO2 표는 저산소를 만들지 않아요."}, {"c": "훈련", "t": "s", "q": "최대 STA가 3분 20초면 CO2 표의 숨 참기 시간은?", "o": ["1분", "1분 40초", "2분 30초", "3분"], "a": [1], "e": "최대의 50%."}, {"c": "훈련", "t": "s", "q": "(O/X) CO2 표는 쉬는 시간이 산소를 회복하기엔 충분하지만 CO2를 다 내보내기엔 부족하게 짠다.", "o": ["맞음", "틀림"], "a": [0], "e": "그래서 CO2가 점점 쌓여요."}, {"c": "훈련", "t": "s", "q": "(O/X) O2 훈련과 CO2 훈련은 같은 세션에 섞어서 하는 게 효과적이다.", "o": ["맞음", "틀림"], "a": [1], "e": "섞지 않아요."}, {"c": "훈련", "t": "s", "q": "(O/X) 물속 훈련은 버디 둘이 나란히 동시에 하면 안전하다.", "o": ["맞음", "틀림"], "a": [1], "e": "한 명이 다이빙하면 한 명은 지켜봐요. 혼자 할 땐 물 밖에서만."}, {"c": "훈련", "t": "s", "q": "시간 대신 호흡 횟수로 CO2 표를 짜면 좋은 점은?", "o": ["더 쉬워진다", "들이쉬는 공기 양이 일정해 더 정확하다", "산소가 더 많아진다", "시계가 필요 없어서 위험하다"], "a": [1], "e": "5번 숨 = 정해진 양."}, {"c": "훈련", "t": "s", "q": "최대 기록 전 마지막 휴식은 최소?", "o": ["1분", "2분", "4분", "10분"], "a": [2], "e": "젖산이 빠질 시간이 필요해요."}, {"c": "MDR", "t": "s", "q": "(O/X) MDR은 자극 하나가 반응 하나를 일으키는 '잠수 반사'다.", "o": ["맞음", "틀림"], "a": [1], "e": "여러 자극 → 여러 반응의 조합이라 반사가 아니에요."}, {"c": "MDR", "t": "m", "q": "(모두 고르시오) MDR의 반응을 모두 고르시오.", "o": ["말초혈관 수축", "서맥", "비장 효과", "블러드 시프트", "대사 저하", "과호흡"], "a": [0, 1, 2, 3, 4], "e": "5가지."}, {"c": "MDR", "t": "m", "q": "(모두 고르시오) MDR을 일으키는 자극을 모두 고르시오.", "o": ["숨 참기(CO2 상승)", "물에 잠김", "압력 증가(RV 이하)", "차가운 온도", "따뜻한 물"], "a": [0, 1, 2, 3], "e": "4가지 자극."}, {"c": "MDR", "t": "match", "q": "(짝 맞추기) 반응과 효과를 연결하세요.", "pairs": [["말초혈관 수축", "팔다리 피를 몸통·뇌로 (젖산 쌓임)"], ["서맥", "심박이 느려져 산소 절약"], ["비장 효과", "저장된 적혈구 방출"], ["블러드 시프트", "폐포 혈관이 부풀어 폐 압착 예방"], ["침수 이뇨", "소변이 늘어 탈수 위험"]], "e": "교재 9장."}, {"c": "MDR", "t": "s", "q": "서맥을 일으키는 가장 간단한 방법은?", "o": ["달리기", "얼굴을 찬물에 담그기", "과호흡", "따뜻한 물 마시기"], "a": [1], "e": "얼굴만 담가도 시작돼요."}, {"c": "MDR", "t": "s", "q": "훈련된 프리다이버의 서맥은 평소 심박에서 최대 약 얼마나 줄어드나?", "o": ["10%", "25%", "50%", "90%"], "a": [2], "e": "일반인은 10~25%."}, {"c": "MDR", "t": "s", "q": "블러드 시프트가 없다면 사람이 다치지 않고 내려갈 수 있는 수심은 대략?", "o": ["10~15m", "25~35m", "50~60m", "100m"], "a": [1], "e": "교재 9.1."}, {"c": "MDR", "t": "s", "q": "(O/X) 블러드 시프트가 있으니 수심을 빨리 늘려도 괜찮다.", "o": ["맞음", "틀림"], "a": [1], "e": "몇 달~몇 년 걸려 발달해요. 가슴이 불편하면 바로 중단."}, {"c": "MDR", "t": "s", "q": "다이빙 중 소변이 마려운 이유는?", "o": ["물을 많이 마셔서", "침수 이뇨: 몸통에 피가 몰려 수분 과다로 착각해서", "추워서", "긴장해서"], "a": [1], "e": "탈수 위험 → 물 많이 마시기."}, {"c": "MDR", "t": "t", "q": "(주관식) 블러드 시프트를 오렌지에 비유해 설명하세요.", "a": "과육=폐포 속 공기, 껍질=폐포 주변 혈관. 깊어질수록 과육(공기)은 줄지만 껍질(혈관)이 피로 부풀어 전체 크기는 덜 줄어든다. 그래서 폐에 음압이 덜 생긴다.", "e": "교재 9.5."}, {"c": "생리", "t": "t", "q": "(주관식) 과호흡이 블랙아웃으로 이어지는 이유를 설명하세요.", "a": "산소는 늘지 않고 CO2만 낮아져 숨 참기 충동(경고)이 늦게 온다. 그 사이 산소가 45%까지 떨어져 의식을 잃는다. 게다가 MDR이 약해지고 보어 효과로 산소가 조직에 덜 간다.", "e": "교재 2.4."}, {"c": "저산소", "t": "t", "q": "(주관식) 얕은 물 블랙아웃이 상승 마지막 구간에서 생기는 원리를 설명하세요.", "a": "하강 때 폐가 눌려 산소 분압이 높아 산소가 잘 공급된다. 상승하면 분압이 떨어지고, 수면 근처(10→0m)에서 압력이 50%나 줄어 산소 분압이 0.1bar 아래로 떨어지면 의식을 잃는다.", "e": "교재 7.4."}, {"c": "압착", "t": "t", "q": "(주관식) 리버스 블록이 생겼을 때 대처 순서를 쓰세요.", "a": "줄 잡고 멈추기 → 이퀄하지 않기 → 버디에게 신호 → 아픈 쪽 목 늘리기·턱 흔들기·코 막고 삼키기 → 줄 따라 최대한 천천히 상승.", "e": "교재 4.3."}, {"c": "훈련", "t": "order", "q": "(순서 맞추기) CWT 최대 기록 워밍업 순서대로 번호를 고르세요.", "items": ["이완", "FIM으로 -10m(또는 NB)까지 천천히", "NB에서 30초 매달리기", "NB에서 첫 수축까지 매달리기", "5분 휴식 후 최대 기록"], "e": "교재 그림 16."}, {"c": "폐", "t": "order", "q": "(순서 맞추기) 폐 압착이 의심될 때 대처 순서대로 번호를 고르세요.", "items": ["즉시 다이빙 중단", "기침 한 번, 손바닥에 뱉어 확인", "천천히 얕게 숨 쉬며 버디에게 알림", "가능하면 순산소", "병원 + 최소 1주일 중단"], "e": "교재 5.3."}];
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===b.dataset.t));scrollTo(0,0)});
+// ===== 모의고사 (화면 전환형) =====
+(function(){
+const KEY='aida3quiz_v1';
+let ST={}; try{ST=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const rec=i=>ST[i]||(ST[i]={seen:0,ok:0,wrong:0,last:null});
+const CATS=[...new Set(Q.map(q=>q.c))];
+const L='abcdef';
+const root=document.getElementById('qz');
+let opt={mode:'exam',n:10,cat:'all'};
+let S=null; // session
+
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const strip=q=>q.replace(/^\([^)]*\)\s*/,'');
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const tagHtml=q=>q.t==='m'?'<span class="qtag m">모두 고르시오</span>':q.t==='t'?'<span class="qtag t">주관식</span>':q.t==='match'?'<span class="qtag mt">짝 맞추기</span>':q.t==='order'?'<span class="qtag mt">순서 맞추기</span>':/^\(O\/X\)/.test(q.q)?'<span class="qtag ox">O/X</span>':'<span class="qtag">객관식</span>';
+
+function stats(){
+  const ids=Q.map((_,i)=>i); const seen=ids.filter(i=>ST[i]&&ST[i].seen);
+  const wrongNow=ids.filter(i=>ST[i]&&ST[i].last===false);
+  const okNow=ids.filter(i=>ST[i]&&ST[i].last===true);
+  return {total:Q.length,seen:seen.length,wrong:wrongNow.length,acc:seen.length?Math.round(okNow.length/seen.length*100):0};
+}
+function pick(n,cat,onlyWrong){
+  let pool=Q.map((_,i)=>i).filter(i=>cat==='all'||Q[i].c===cat);
+  if(onlyWrong) pool=pool.filter(i=>ST[i]&&ST[i].last===false);
+  // 안 푼 문제 → 틀린 문제 → 맞힌 문제 순으로 우선
+  const g0=shuf(pool.filter(i=>!(ST[i]&&ST[i].seen))), g1=shuf(pool.filter(i=>ST[i]&&ST[i].last===false)), g2=shuf(pool.filter(i=>ST[i]&&ST[i].last===true));
+  const ordered=onlyWrong?shuf(pool):g0.concat(g1,g2);
+  return n? ordered.slice(0,n) : ordered;
+}
+
+function home(){
+  clearInterval(window.__qt);
+  const s=stats();
+  const catBtns=['all'].concat(CATS).map(c=>`<button class="chip ${opt.cat===c?'on':''}" data-cat="${c}">${c==='all'?'전체':c}</button>`).join('');
+  root.innerHTML=`
+  <div class="card qhome">
+    <h2>모의고사</h2>
+    <div class="stat3">
+      <div><b>${s.seen}</b><span>/${s.total} 풀어봄</span></div>
+      <div><b>${s.acc}%</b><span>정답률</span></div>
+      <div><b>${s.wrong}</b><span>오답노트</span></div>
+    </div>
+    <div class="pbar"><i style="width:${Math.round(s.seen/s.total*100)}%"></i></div>
+    <p class="hint">안 푼 문제부터 먼저 나와요. 같은 문제만 반복되지 않아요.</p><p class="hint">AIDA3 시험 문항 수·시간은 공개된 공식 자료에서 확인하지 못했어요. 합격선은 75%예요.</p>
+  </div>
+  <div class="card">
+    <div class="lbl">방식</div>
+    <div class="seg" id="segMode">
+      <button data-v="exam" class="${opt.mode==='exam'?'on':''}"><b>실전</b><small>끝나고 한 번에 채점</small></button>
+      <button data-v="practice" class="${opt.mode==='practice'?'on':''}"><b>연습</b><small>문제마다 바로 해설</small></button>
+    </div>
+    <div class="lbl">문항 수</div>
+    <div class="seg" id="segN">
+      ${[10,20,33,0].map(v=>`<button data-v="${v}" class="${opt.n===v?'on':''}"><b>${v||'전체'}</b><small>${v===33?'33문제':v?v+'문제':Q.length+'문제'}</small></button>`).join('')}
+    </div>
+    <div class="lbl">범위</div>
+    <div class="chips">${catBtns}</div>
+  </div>
+  <div class="actbar">
+    <button class="big ghost" id="goWrong" ${s.wrong?'':'disabled'}>오답만 다시 (${s.wrong})</button>
+    <button class="big" id="goStart">시작하기</button>
+  </div>
+  <p class="reset"><a href="#" id="resetRec">기록 초기화</a></p>`;
+  root.querySelectorAll('#segMode button').forEach(b=>b.onclick=()=>{opt.mode=b.dataset.v;home()});
+  root.querySelectorAll('#segN button').forEach(b=>b.onclick=()=>{opt.n=+b.dataset.v;home()});
+  root.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{opt.cat=b.dataset.cat;home()});
+  document.getElementById('goStart').onclick=()=>start(pick(opt.n,opt.cat,false));
+  document.getElementById('goWrong').onclick=()=>start(pick(0,'all',true));
+  document.getElementById('resetRec').onclick=e=>{e.preventDefault(); if(confirm('푼 기록과 오답노트를 지울까요?')){ST={};save();home();}};
+}
+
+function start(ids){
+  if(!ids.length){alert('해당 범위에 문제가 없어요');return}
+  S={ids,i:0,ans:ids.map(()=>null),done:ids.map(()=>false),mode:opt.mode,mo:ids.map(qi=>Q[qi].t==='match'?shuf(Q[qi].pairs.map(p=>p[1])):Q[qi].t==='order'?shuf(Q[qi].items.map((_,i)=>i)):null)};
+  S.flag=ids.map(()=>false);
+  clearInterval(window.__qt); S.end=null;
+  if(S.mode==='exam'){ S.end=Date.now()+Math.round(ids.length*90/33)*60000;
+    window.__qt=setInterval(()=>{ const el=document.getElementById('qtime'); const left=S.end-Date.now();
+      if(left<=0){ clearInterval(window.__qt); commit(false); result(); scrollTo(0,0); toast('시간이 끝나서 자동 제출했어요'); return; }
+      if(el) el.textContent=fmtT(left); },1000); }
+  renderQ(); scrollTo(0,0);
+}
+function fmtT(ms){const t=Math.max(0,Math.ceil(ms/1000)),h=Math.floor(t/3600),m=Math.floor(t%3600/60),x=t%60;return [h,m,x].map(v=>String(v).padStart(2,'0')).join(':')}
+function isRight(q,a){
+  if(q.t==='t') return a&&a.self===true;
+  if(q.t==='match') return !!(a&&a.match&&q.pairs.every((p,i)=>a.match[i]===p[1]));
+  if(q.t==='order') return !!(a&&a.ord&&q.items.every((_,i)=>+a.ord[i]===i+1));
+  if(!a||!a.pick||!a.pick.length) return false;
+  return a.pick.length===q.a.length && a.pick.every(p=>q.a.includes(p));
+}
+function renderQ(){
+  const k=S.i, qi=S.ids[k], q=Q[qi], a=S.ans[k]||{pick:[],text:'',self:null}, shown=S.done[k];
+  const pct=Math.round((k)/S.ids.length*100);
+  let body='';
+  if(q.t==='order'){
+    const mo=S.mo[k]; const od=(a.ord)||[]; const n=q.items.length;
+    body='<div class="hint">각 항목에 순서 번호를 고르세요</div>'+mo.map(i=>{
+      let cls='orow'; if(shown) cls+=(+od[i]===i+1?' right':' wrong');
+      return `<div class="${cls}"><select data-oi="${i}" ${shown?'disabled':''}><option value="">-</option>${Array.from({length:n},(_,x)=>`<option ${+od[i]===x+1?'selected':''}>${x+1}</option>`).join('')}</select><div class="otx">${esc(q.items[i])}${shown&&+od[i]!==i+1?`<div class="mfix">정답: ${i+1}번째</div>`:''}</div></div>`;}).join('');
+    if(shown){ const ok=isRight(q,a); body+=`<div class="fb ${ok?'okb':'nob'}"><div class="fbh">${ok?'순서가 모두 맞아요':'순서가 틀린 칸이 있어요'}</div><div class="fbe">${esc(q.e)}</div></div>`; }
+  } else if(q.t==='match'){
+    const mo=S.mo[k]; const mm=(a.match)||[];
+    const LT='ABCDEFGH'; const lt=o=>LT[mo.indexOf(o)]||'';
+    body='<div class="hint">설명마다 알맞은 기호를 고르세요</div><ol class="mlist">'+mo.map((o,x)=>`<li><b>${LT[x]}.</b> ${esc(o)}</li>`).join('')+'</ol>'+q.pairs.map((p,i)=>{
+      let cls='mrow'; if(shown) cls+= (mm[i]===p[1]?' right':' wrong');
+      return `<div class="${cls}"><div class="ml">${esc(p[0])}</div><select data-i="${i}" ${shown?'disabled':''}><option value="">-</option>${mo.map(o=>`<option value="${esc(o)}" ${mm[i]===o?'selected':''}>${lt(o)}</option>`).join('')}</select>${shown&&mm[i]!==p[1]?`<div class="mfix">정답: ${lt(p[1])}. ${esc(p[1])}</div>`:''}</div>`;}).join('');
+    if(shown){ const ok=isRight(q,a); body+=`<div class="fb ${ok?'okb':'nob'}"><div class="fbh">${ok?'모두 맞았어요':'틀린 칸이 있어요'}</div><div class="fbe">${esc(q.e)}</div></div>`; }
+  } else if(q.t==='t'){
+    body=`<textarea id="ta" placeholder="떠오르는 대로 적어보세요 (안 적어도 돼요)">${esc(a.text||'')}</textarea>`;
+    if(shown){ body+=`<div class="fb"><div class="fbh">모범답안</div>${esc(q.a)}<div class="fbe">${esc(q.e)}</div>
+      <div class="selfq">내 답이 맞았나요?</div><div class="seg2"><button data-s="1" class="${a.self===true?'on ok':''}">맞았어요</button><button data-s="0" class="${a.self===false?'on no':''}">틀렸어요</button></div></div>`; }
+  } else {
+    body=(q.t==='m'?'<div class="hint">해당하는 것을 모두 고르세요</div>':'')+q.o.map((o,j)=>{
+      const sel=a.pick&&a.pick.includes(j);
+      let cls='opt2'+(sel?' sel':'');
+      if(shown){ if(q.a.includes(j)) cls+=' right'; else if(sel) cls+=' wrong'; }
+      return `<button class="${cls}" data-j="${j}" ${shown?'disabled':''}><span class="ltr">${L[j]}</span><span>${esc(o)}</span>${q.t==='m'?'<span class="ck">'+(sel?'✓':'')+'</span>':''}</button>`;}).join('');
+    if(shown){ const ok=isRight(q,a); body+=`<div class="fb ${ok?'okb':'nob'}"><div class="fbh">${ok?'정답이에요':'아쉬워요'} · 정답 ${q.a.map(x=>L[x]).join(', ')}</div><div class="fbe">${esc(q.e)}</div></div>`; }
+  }
+  const last=k===S.ids.length-1;
+  let primary;
+  if(S.mode==='practice'){
+    if(!shown) primary=q.t==='t'?'정답 보기':'확인';
+    else primary=last?'결과 보기':'다음 문제';
+  } else {
+    if(q.t==='t' && !shown) primary='정답 보기';
+    else primary=last?'제출하고 채점':'다음';
+  }
+  root.innerHTML=`
+  <div class="qtop"><button class="xbtn" id="quit">✕ 그만두기</button>${S.end?`<span class="qtime">남은 시간 <b id="qtime">${fmtT(S.end-Date.now())}</b></span>`:''}<span class="qcnt">${S.mode==='exam'?`${S.ids.length}의 ${k+1} 페이지`:`${k+1} / ${S.ids.length}`}</span></div>
+  <div class="pbar thin"><i style="width:${pct}%"></i></div>
+  <div class="card qcard">
+    <div class="qmeta">${tagHtml(q)}<span class="qcat">${esc(q.c)}</span>${S.mode==='exam'?`<label class="flag"><input type="checkbox" id="flagc" ${S.flag[k]?'checked':''}> 나중에 리뷰하기</label>`:''}</div>
+    <div class="qtext">${esc(strip(q.q))}</div>
+    ${body}
+  </div>
+  <div class="actbar">
+    <button class="big ghost" id="prev" ${k===0?'disabled':''}>이전</button>
+    <button class="big" id="next">${primary}</button>
+  </div>${S.mode==='exam'&&S.flag.some(Boolean)?`<div class="flags"><span>체크된 질문</span>${S.flag.map((f,x)=>f?`<button data-go="${x}" class="${x===k?'cur':''}">${x+1}</button>`:'').join('')}</div>`:''}`;
+  const fcb=document.getElementById('flagc'); if(fcb) fcb.onchange=()=>{S.flag[k]=fcb.checked; renderQ();};
+  root.querySelectorAll('.flags button').forEach(b=>b.onclick=()=>{S.i=+b.dataset.go; renderQ(); scrollTo(0,0);});
+  const ta=document.getElementById('ta'); if(ta) ta.oninput=()=>{S.ans[k]=Object.assign(S.ans[k]||{},{text:ta.value})};
+  root.querySelectorAll('.orow select').forEach(sel=>sel.onchange=()=>{const cur=S.ans[k]||{}; const od=(cur.ord||[]).slice(); od[+sel.dataset.oi]=sel.value||undefined; S.ans[k]=Object.assign(cur,{ord:od});});
+  root.querySelectorAll('.mrow select').forEach(sel=>sel.onchange=()=>{const cur=S.ans[k]||{}; const mm=(cur.match||[]).slice(); mm[+sel.dataset.i]=sel.value||undefined; S.ans[k]=Object.assign(cur,{match:mm});});
+  root.querySelectorAll('.opt2').forEach(b=>b.onclick=()=>{
+    const j=+b.dataset.j; const cur=S.ans[k]||{pick:[]}; let p=cur.pick||[];
+    if(q.t==='m') p=p.includes(j)?p.filter(x=>x!==j):p.concat(j); else p=[j];
+    S.ans[k]=Object.assign(cur,{pick:p}); renderQ();
+  });
+  root.querySelectorAll('.seg2 button').forEach(b=>b.onclick=()=>{S.ans[k]=Object.assign(S.ans[k]||{},{self:b.dataset.s==='1'}); renderQ();});
+  document.getElementById('quit').onclick=()=>{ if(confirm('그만두고 처음 화면으로 갈까요? (지금까지 푼 건 기록돼요)')){commit(true);home();} };
+  document.getElementById('prev').onclick=()=>{S.i--;renderQ();scrollTo(0,0)};
+  document.getElementById('next').onclick=()=>{
+    const cur=S.ans[k];
+    if(q.t==='match'){ if(!cur||!cur.match||q.pairs.some((p,i)=>!cur.match[i])){ toast('모든 칸을 골라주세요'); return; } }
+    else if(q.t==='order'){ if(!cur||!cur.ord||q.items.some((_,i)=>!cur.ord[i])){ toast('모든 칸에 번호를 골라주세요'); return; } }
+    else if(q.t!=='t' && (!cur||!cur.pick||!cur.pick.length)){ toast('답을 골라주세요'); return; }
+    if(q.t==='t' && !shown){ S.done[k]=true; renderQ(); return; }
+    if(q.t==='t' && shown && (cur==null||cur.self==null)){ toast('맞았는지 골라주세요'); return; }
+    if(S.mode==='practice' && !shown){ S.done[k]=true; renderQ(); return; }
+    if(last){ commit(false); result(); scrollTo(0,0); return; }
+    S.i++; renderQ(); scrollTo(0,0);
+  };
+}
+function commit(partial){
+  S.ids.forEach((qi,k)=>{ const a=S.ans[k]; if(!a) return; const q=Q[qi];
+    if(q.t==='t' && a.self==null) return;
+    if(q.t==='match' && !(a.match&&a.match.length)) return;
+    if(q.t==='order' && !(a.ord&&a.ord.length)) return;
+    if(q.t!=='t' && q.t!=='match' && q.t!=='order' && (!a.pick||!a.pick.length)) return;
+    const r=rec(qi), ok=isRight(q,a); r.seen++; r.last=ok; if(ok) r.ok++; else r.wrong++; });
+  save();
+}
+function result(){
+  clearInterval(window.__qt);
+  const n=S.ids.length; const okList=S.ids.map((qi,k)=>isRight(Q[qi],S.ans[k]));
+  const c=okList.filter(Boolean).length, pct=Math.round(c/n*100), pass=pct>=75;
+  const byCat={}; S.ids.forEach((qi,k)=>{const ct=Q[qi].c; byCat[ct]=byCat[ct]||{n:0,c:0}; byCat[ct].n++; if(okList[k]) byCat[ct].c++;});
+  const catRows=Object.entries(byCat).map(([ct,v])=>{const p=Math.round(v.c/v.n*100);return `<div class="crow"><span>${ct}</span><div class="pbar"><i class="${p>=75?'':'low'}" style="width:${p}%"></i></div><b>${v.c}/${v.n}</b></div>`}).join('');
+  const wrongs=S.ids.map((qi,k)=>({qi,k})).filter(x=>!okList[x.k]);
+  const wHtml=wrongs.map(({qi,k})=>{const q=Q[qi], a=S.ans[k]||{};
+    let mine,right;
+    if(q.t==='order'){ mine=q.items.map((it,i)=>((a.ord||[])[i]||'-')+'. '+esc(it)).join('<br>'); right=q.items.map((it,i)=>(i+1)+'. '+esc(it)).join('<br>'); }
+    else if(q.t==='match'){ mine=q.pairs.map((p,i)=>esc(p[0])+' → '+esc((a.match||[])[i]||'(빈칸)')).join('<br>'); right=q.pairs.map(p=>esc(p[0])+' → '+esc(p[1])).join('<br>'); }
+    else { mine=q.t==='t'?(a.text?esc(a.text):'(빈칸)'):((a.pick||[]).map(x=>L[x]+') '+esc(q.o[x])).join(', ')||'(무응답)'); right=q.t==='t'?esc(q.a):q.a.map(x=>L[x]+') '+esc(q.o[x])).join(', '); }
+    return `<details class="wr"><summary>${esc(strip(q.q))}</summary><div class="wb"><div><span class="mine">내 답</span> ${mine}</div><div><span class="rt">정답</span> ${right}</div><div class="fbe">${esc(q.e)}</div></div></details>`}).join('');
+  root.innerHTML=`
+  <div class="card res ${pass?'pass':'fail'}">
+    <div class="ring" style="--p:${pct}"><span>${pct}<small>%</small></span></div>
+    <div class="rmsg">${pct>=90?'아주 좋아요! 실전도 문제없어요':pass?'합격선(75%) 통과! 틀린 것만 다시 보세요':'조금만 더! 틀린 문제를 복습해요'}</div>
+    <div class="rsub">${n}문제 중 ${c}개 정답 · 합격선 75%</div>
+  </div>
+  <div class="card"><div class="lbl">범위별 결과</div>${catRows}</div>
+  ${wrongs.length?`<div class="card"><div class="lbl">틀린 문제 ${wrongs.length}개 · 눌러서 해설 보기</div>${wHtml}</div>`:''}
+  <div class="actbar">
+    <button class="big ghost" id="again" ${wrongs.length?'':'disabled'}>틀린 것만 다시</button>
+    <button class="big" id="newset">새 모의고사</button>
+  </div>
+  <p class="reset"><a href="#" id="toHome">처음 화면으로</a></p>`;
+  document.getElementById('again').onclick=()=>start(shuf(wrongs.map(x=>x.qi)));
+  document.getElementById('newset').onclick=()=>start(pick(opt.n,opt.cat,false));
+  document.getElementById('toHome').onclick=e=>{e.preventDefault();home();scrollTo(0,0)};
+}
+let tt=null; function toast(m){let t=document.getElementById('toast'); if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t)} t.textContent=m; t.className='show'; clearTimeout(tt); tt=setTimeout(()=>t.className='',1400);}
+home();
+})();
+
+let hits=[],hi=-1;const full=document.querySelector('.full');
+function clearMarks(){full.querySelectorAll('mark').forEach(m=>{m.replaceWith(document.createTextNode(m.textContent))});full.normalize();}
+function doSearch(){clearMarks();hits=[];hi=-1;const q=document.getElementById('sq').value.trim();if(!q){document.getElementById('scnt').textContent='';return}
+ const w=document.createTreeWalker(full,NodeFilter.SHOW_TEXT);const nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+ const ql=q.toLowerCase();
+ nodes.forEach(n=>{const t=n.nodeValue;const tl=t.toLowerCase();let i=tl.indexOf(ql);if(i<0)return;const frag=document.createDocumentFragment();let last=0;
+  while(i>=0){frag.appendChild(document.createTextNode(t.slice(last,i)));const m=document.createElement('mark');m.textContent=t.slice(i,i+q.length);frag.appendChild(m);hits.push(m);last=i+q.length;i=tl.indexOf(ql,last)}
+  frag.appendChild(document.createTextNode(t.slice(last)));n.replaceWith(frag)});
+ document.getElementById('scnt').textContent=hits.length?hits.length+'건':'결과 없음';nextHit()}
+function nextHit(){if(!hits.length)return;if(hi>=0)hits[hi].classList.remove('cur');hi=(hi+1)%hits.length;hits[hi].classList.add('cur');hits[hi].scrollIntoView({block:'center'});document.getElementById('scnt').textContent=(hi+1)+'/'+hits.length+'건'}
+if(document.getElementById('sgo')){document.getElementById('sgo').onclick=doSearch;document.getElementById('snext').onclick=nextHit;document.getElementById('sq').onkeydown=e=>{if(e.key==='Enter')doSearch()};}
+// flashcards from term table
+const rows=[...document.querySelectorAll('#word table tr')].slice(1).map(r=>[...r.children].map(td=>td.textContent));
+let fi=0,back=false;const fc=document.getElementById('fc');
+const show=()=>{fc.classList.toggle('back',back);fc.textContent=rows.length?(back?rows[fi][1]:rows[fi][0])+'  ('+(fi+1)+'/'+rows.length+')':''};
+fc.onclick=document.getElementById('fflip').onclick=()=>{back=!back;show()};
+document.getElementById('fnext').onclick=()=>{fi=(fi+1)%rows.length;back=false;show()};
+document.getElementById('fprev').onclick=()=>{fi=(fi-1+rows.length)%rows.length;back=false;show()};show();
+</script></body></html>
