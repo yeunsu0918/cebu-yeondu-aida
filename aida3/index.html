@@ -247,6 +247,21 @@ nav{padding:0 max(0px,calc((100% - 760px)/2))}
 @media (min-width:768px){.inst img{width:100px}}
 .lvl{display:inline-flex;align-items:center;margin:12px 0 0 8px;font-size:13px;font-weight:600;color:var(--c);text-decoration:none;border:1px solid var(--line);background:#fff;padding:5px 12px;border-radius:999px}
 #full td:first-child,#full th:first-child{white-space:nowrap}
+#sfab{position:fixed;right:16px;bottom:18px;z-index:50;display:flex;align-items:center;gap:6px;border:0;border-radius:999px;background:#0f172a;color:#fff;padding:11px 16px;font:inherit;font-size:14px;font-weight:700;box-shadow:0 6px 18px rgba(15,23,42,.25);cursor:pointer}
+#sov{position:fixed;inset:0;z-index:60;background:rgba(15,23,42,.45);display:none;align-items:flex-start;justify-content:center;padding:max(12px,4vh) 12px 12px}
+#sov.on{display:flex}
+#sov .sbox{width:100%;max-width:640px;max-height:88vh;background:#fff;border-radius:16px;display:flex;flex-direction:column;overflow:hidden}
+#sov .stop{display:flex;gap:8px;padding:12px;border-bottom:1px solid var(--line)}
+#sov input{flex:1;min-width:0;font:inherit;font-size:16px;padding:11px 12px;border:1px solid var(--line);border-radius:10px}
+#sov .sx{border:0;background:#f1f5f9;border-radius:10px;padding:0 14px;font:inherit;font-size:14px;font-weight:600;color:#334155}
+#sov .sres{overflow:auto;padding:6px 8px 12px}
+#sov .scnt,#sov .shint{font-size:13px;color:var(--mute);margin:8px 6px}
+#sov .sitem{display:block;width:100%;text-align:left;border:0;background:none;padding:10px 8px;border-bottom:1px solid #f1f5f9;font:inherit;cursor:pointer;word-break:keep-all}
+#sov .stab{display:block;font-size:12px;font-weight:700;color:var(--c);margin-bottom:2px}
+#sov .stxt{font-size:14.5px;line-height:1.55;color:#1e293b}
+#sov mark,.sflash mark{background:#fde68a;border-radius:3px;padding:0 1px}
+.sflash{animation:sfl 2.2s ease}
+@keyframes sfl{0%,40%{background:#fef3c7;box-shadow:0 0 0 3px #fde68a}100%{background:transparent;box-shadow:none}}
 
 footer{font-size:12px;color:#888;text-align:center;padding:18px 12px 70px}
 </style></head><body>
@@ -836,4 +851,44 @@ const show=()=>{fc.classList.toggle('back',back);fc.textContent=rows.length?(bac
 fc.onclick=document.getElementById('fflip').onclick=()=>{back=!back;show()};
 document.getElementById('fnext').onclick=()=>{fi=(fi+1)%rows.length;back=false;show()};
 document.getElementById('fprev').onclick=()=>{fi=(fi-1+rows.length)%rows.length;back=false;show()};show();
+</script>
+<script>(function(){
+const TABN={key:'핵심',ch:'요약',num:'숫자',rev:'복습',word:'용어',full:'교재'};
+let IDX=null;
+function build(){IDX=[];
+  Object.keys(TABN).forEach(id=>{const sec=document.getElementById(id); if(!sec) return;
+    let els;
+    if(id==='rev') els=sec.querySelectorAll('details.qa');
+    else if(id==='full') els=sec.querySelectorAll('p,li,tr,h2,h3,h4,blockquote');
+    else els=sec.querySelectorAll('li,tr,details.qa,p');
+    els.forEach(el=>{ if(el.closest('.keys')&&el.tagName==='P') return; if(id!=='rev'&&el.querySelector('li,tr,p')&&el.tagName!=='P') return;
+      const t=(el.tagName==='TR'?[...el.children].map(c=>c.textContent).join(' · '):el.textContent).replace(/\s+/g,' ').trim(); if(t.length<2) return;
+      const d=el.closest('details.ch'); const where=d?d.querySelector('summary').textContent.trim():(el.closest('.card')?.querySelector('h2')?.textContent||'');
+      IDX.push({id,el,t,where});});
+  });}
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function snip(t,q){const i=t.toLowerCase().indexOf(q.toLowerCase()); const a=Math.max(0,i-30), b=Math.min(t.length,i+q.length+60);
+  return (a?'…':'')+esc(t.slice(a,i))+'<mark>'+esc(t.slice(i,i+q.length))+'</mark>'+esc(t.slice(i+q.length,b))+(b<t.length?'…':'');}
+function go(r){close(); const b=[...document.querySelectorAll('nav button')].find(x=>x.dataset.t===r.id); if(b) b.click();
+  let p=r.el.parentElement; while(p){ if(p.tagName==='DETAILS') p.open=true; p=p.parentElement; } if(r.el.tagName==='DETAILS') r.el.open=true;
+  setTimeout(()=>{r.el.scrollIntoView({block:'center'}); r.el.classList.add('sflash'); setTimeout(()=>r.el.classList.remove('sflash'),2200);},80);}
+let ov;
+function open(){ if(!IDX) build(); ov.classList.add('on'); const i=ov.querySelector('input'); i.focus(); i.select(); }
+function close(){ ov.classList.remove('on'); }
+function run(q){ const box=ov.querySelector('.sres'); q=q.trim(); if(q.length<1){box.innerHTML='<p class="shint">예: 1/3, 프렌젤, 리버스, RV, 0.42, 블러드</p>';return;}
+  const ql=q.toLowerCase(); const hits=IDX.filter(r=>r.t.toLowerCase().includes(ql));
+  const order=['key','ch','num','rev','word','full']; hits.sort((a,b)=>order.indexOf(a.id)-order.indexOf(b.id));
+  if(!hits.length){box.innerHTML='<p class="shint">"'+esc(q)+'" 결과가 없어요. 다른 말로 찾아보세요 (영어 용어도 돼요).</p>';return;}
+  box.innerHTML='<p class="scnt">'+hits.length+'건</p>'+hits.slice(0,80).map((r,k)=>`<button class="sitem" data-k="${k}"><span class="stab">${TABN[r.id]}${r.where?' · '+esc(r.where.slice(0,24)):''}</span><span class="stxt">${snip(r.t,q)}</span></button>`).join('');
+  box.querySelectorAll('.sitem').forEach(b=>b.onclick=()=>go(hits[+b.dataset.k]));}
+document.addEventListener('DOMContentLoaded',init); if(document.readyState!=='loading') init();
+function init(){ if(document.getElementById('sfab')) return;
+  const fab=document.createElement('button'); fab.id='sfab'; fab.setAttribute('aria-label','공부장 전체 검색'); fab.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>찾기</span>'; document.body.appendChild(fab);
+  ov=document.createElement('div'); ov.id='sov'; ov.innerHTML='<div class="sbox"><div class="stop"><input type="search" placeholder="공부장 전체에서 단어 찾기"><button class="sx" aria-label="닫기">닫기</button></div><div class="sres"></div></div>'; document.body.appendChild(ov);
+  fab.onclick=open; ov.querySelector('.sx').onclick=close; ov.onclick=e=>{if(e.target===ov) close();};
+  const inp=ov.querySelector('input'); inp.oninput=()=>run(inp.value); run('');
+  document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{fab.style.display=b.dataset.t==='quiz'?'none':'';}));
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); if((e.key==='/'||(e.key==='k'&&(e.metaKey||e.ctrlKey)))&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();open();} });
+}
+})();
 </script></body></html>
