@@ -1688,7 +1688,7 @@ function home(){
       <div><b>${s.wrong}</b><span>오답노트</span></div>
     </div>
     <div class="pbar"><i style="width:${Math.round(s.seen/s.total*100)}%"></i></div>
-    <p class="hint">안 푼 문제부터 먼저 나와요. 같은 문제만 반복되지 않아요.</p><p class="hint">AIDA3 시험 문항 수·시간은 공개된 공식 자료에서 확인하지 못했어요. 합격선은 75%예요.</p>
+    <p class="hint">안 푼 문제부터 먼저 나와요. 같은 문제만 반복되지 않아요.</p><p class="hint">실제 AIDA3 시험: 30문제 · 합격선 75% · 한 화면에 한 문제 · 모두 고르시오, 짝 맞추기, 계산 문제가 섞여 나와요. '실전 + 30문제'로 고르면 실제처럼 풀어볼 수 있어요.</p>
   </div>
   <div class="card">
     <div class="lbl">방식</div>
@@ -1698,7 +1698,7 @@ function home(){
     </div>
     <div class="lbl">문항 수</div>
     <div class="seg" id="segN">
-      ${[10,20,33,0].map(v=>`<button data-v="${v}" class="${opt.n===v?'on':''}"><b>${v||'전체'}</b><small>${v===33?'33문제':v?v+'문제':Q.length+'문제'}</small></button>`).join('')}
+      ${[10,20,30,0].map(v=>`<button data-v="${v}" class="${opt.n===v?'on':''}"><b>${v||'전체'}</b><small>${v===30?'실제 시험처럼':v?v+'문제':Q.length+'문제'}</small></button>`).join('')}
     </div>
     <div class="lbl">범위</div>
     <div class="chips">${catBtns}</div>
