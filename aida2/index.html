@@ -122,6 +122,10 @@ details.wr summary{font-size:14.5px;color:#334;font-weight:600}
 .flags button.cur{background:#2b7bbf;color:#fff}
 .mlist{list-style:none;padding:12px 14px;margin:0 0 10px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.9}
 .mlist b{display:inline-block;min-width:22px}
+.hintb{margin-top:12px;border:1px dashed #d97706;background:#fffbeb;color:#92400e;border-radius:10px;padding:9px 12px;font:inherit;font-size:14px;font-weight:600;width:100%;text-align:left}
+.hintbox{margin-top:12px;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.6}
+.hintbox .hh{font-weight:700;color:#92400e;margin-bottom:4px}.hintbox ul{margin:0 0 6px;padding-left:18px}.hintbox a,.refl a{color:#0e7490;font-weight:600;text-decoration:none}
+.refl{margin-top:10px;font-size:13.5px;color:#64748b}
 
 /* ===== modern theme override ===== */
 :root{--c:#0e7490;--d:#0f172a;--bg:#f6f7f9;--ok:#15803d;--no:#dc2626;--line:#e5e7eb;--mute:#64748b}
@@ -613,6 +617,26 @@ function isRight(q,a){
   if(!a||!a.pick||!a.pick.length) return false;
   return a.pick.length===q.a.length && a.pick.every(p=>q.a.includes(p));
 }
+
+function chDetails(ref){return [...document.querySelectorAll('#ch details.ch')].find(d=>d.querySelector('summary').textContent.trim().startsWith(ref));}
+function hintLis(q){const d=chDetails(q.ref); if(!d) return [];
+  const words=(q.q+' '+(q.o||[]).join(' ')+' '+(q.pairs||[]).flat().join(' ')+' '+(q.items||[]).join(' ')).replace(/\([^)]*\)/g,' ').match(/[가-힣A-Za-z0-9]{2,}/g)||[];
+  const stop=new Set(['모두','고르시오','것은','옳은','설명','다음','무엇','어떻게','되나','하나','하는','있다','한다','대해','으로','에서','이유','방법','맞는','틀린','순서대로','번호를','고르세요','연결하세요']);
+  const stems=[...new Set(words.filter(w=>!stop.has(w)).map(w=>/^[가-힣]/.test(w)?w.slice(0,2):w))];
+  const items=[...d.querySelectorAll('li,tr')].map(li=>({h:li.innerHTML,t:li.textContent,tr:li.tagName==='TR'}));
+  const df={}; stems.forEach(st=>{df[st]=items.filter(x=>x.t.includes(st)).length||1;});
+  return items.map(x=>{let sc=0;stems.forEach(st=>{if(x.t.includes(st))sc+=1/df[st]});return Object.assign(x,{sc});}).filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc).slice(0,3);}
+function refBox(q,shown){ if(!q.ref) return '';
+  const name=(chDetails(q.ref)||{querySelector:()=>({textContent:q.ref})}).querySelector('summary').textContent.trim();
+  if(shown) return `<div class="refl">근거: <a href="#" data-go="${esc(q.ref)}">${esc(name)} 요약에서 보기 →</a></div>`;
+  if(S.mode!=='practice') return '';
+  const open=S.hint&&S.hint[S.i];
+  if(!open) return `<button class="hintb" data-hint="1">힌트 보기 (${esc(name)})</button>`;
+  const ls=hintLis(q);
+  return `<div class="hintbox"><div class="hh">${esc(name)}에서 관련 내용</div>${ls.length?'<ul>'+ls.map(x=>x.tr?'<li>'+x.h.replace(/<\/?t[dh][^>]*>/g,' ')+'</li>':'<li>'+x.h+'</li>').join('')+'</ul>':'<p>요약 탭의 '+esc(name)+'을 펼쳐 보세요.</p>'}<a href="#" data-go="${esc(q.ref)}">${esc(name)} 전체 보기 →</a></div>`;
+}
+function goRef(ref){const b=[...document.querySelectorAll('nav button')].find(x=>x.dataset.t==='ch'); if(b) b.click(); const d=chDetails(ref); if(d){d.open=true; setTimeout(()=>d.scrollIntoView({block:'start'}),50);} }
+
 function renderQ(){
   const k=S.i, qi=S.ids[k], q=Q[qi], a=S.ans[k]||{pick:[],text:'',self:null}, shown=S.done[k];
   const pct=Math.round((k)/S.ids.length*100);
@@ -658,6 +682,7 @@ function renderQ(){
     <div class="qmeta">${tagHtml(q)}<span class="qcat">${esc(q.c)}</span>${S.mode==='exam'?`<label class="flag"><input type="checkbox" id="flagc" ${S.flag[k]?'checked':''}> 나중에 리뷰하기</label>`:''}</div>
     <div class="qtext">${esc(strip(q.q))}</div>
     ${body}
+    ${refBox(q,shown)}
   </div>
   <div class="actbar">
     <button class="big ghost" id="prev" ${k===0?'disabled':''}>이전</button>
@@ -665,6 +690,8 @@ function renderQ(){
   </div>${S.mode==='exam'&&S.flag.some(Boolean)?`<div class="flags"><span>체크된 질문</span>${S.flag.map((f,x)=>f?`<button data-go="${x}" class="${x===k?'cur':''}">${x+1}</button>`:'').join('')}</div>`:''}`;
   const fcb=document.getElementById('flagc'); if(fcb) fcb.onchange=()=>{S.flag[k]=fcb.checked; renderQ();};
   root.querySelectorAll('.flags button').forEach(b=>b.onclick=()=>{S.i=+b.dataset.go; renderQ(); scrollTo(0,0);});
+  root.querySelectorAll('[data-hint]').forEach(b=>b.onclick=()=>{S.hint=S.hint||[];S.hint[S.i]=true;renderQ();});
+  root.querySelectorAll('[data-go]').forEach(a=>a.onclick=e=>{e.preventDefault();goRef(a.dataset.go);});
   const ta=document.getElementById('ta'); if(ta) ta.oninput=()=>{S.ans[k]=Object.assign(S.ans[k]||{},{text:ta.value})};
   root.querySelectorAll('.orow select').forEach(sel=>sel.onchange=()=>{const cur=S.ans[k]||{}; const od=(cur.ord||[]).slice(); od[+sel.dataset.oi]=sel.value||undefined; S.ans[k]=Object.assign(cur,{ord:od});});
   root.querySelectorAll('.mrow select').forEach(sel=>sel.onchange=()=>{const cur=S.ans[k]||{}; const mm=(cur.match||[]).slice(); mm[+sel.dataset.i]=sel.value||undefined; S.ans[k]=Object.assign(cur,{match:mm});});
