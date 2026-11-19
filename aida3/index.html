@@ -270,6 +270,9 @@ nav{padding:0 max(0px,calc((100% - 760px)/2))}
 #ch table{font-size:13.5px}
 .wchips{margin:0 0 10px}
 #word td:nth-child(3),#word th:nth-child(3){display:none}
+.sbarw{margin-top:12px}
+#sbar{display:flex;align-items:center;gap:8px;width:100%;border:1px solid var(--line);background:#f8fafc;color:#64748b;border-radius:12px;padding:11px 14px;font:inherit;font-size:15px;text-align:left;cursor:text}
+#sfab{bottom:calc(18px + env(safe-area-inset-bottom))}
 
 footer{font-size:12px;color:#888;text-align:center;padding:18px 12px 70px}
 </style></head><body>
@@ -1933,6 +1936,9 @@ function run(q){ const box=ov.querySelector('.sres'); q=q.trim(); if(q.length<1)
 document.addEventListener('DOMContentLoaded',init); if(document.readyState!=='loading') init();
 function init(){ if(document.getElementById('sfab')) return;
   const fab=document.createElement('button'); fab.id='sfab'; fab.setAttribute('aria-label','공부장 전체 검색'); fab.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>찾기</span>'; document.body.appendChild(fab);
+  const hb=document.createElement('button'); hb.id='sbar'; hb.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>공부장 전체에서 단어 찾기</span>';
+  const hw=document.querySelector('header'); if(hw){ const w=document.createElement('div'); w.className='hwrap sbarw'; w.appendChild(hb); hw.appendChild(w); }
+  hb.onclick=()=>open();
   ov=document.createElement('div'); ov.id='sov'; ov.innerHTML='<div class="sbox"><div class="stop"><input type="search" placeholder="공부장 전체에서 단어 찾기"><button class="sx" aria-label="닫기">닫기</button></div><div class="sres"></div></div>'; document.body.appendChild(ov);
   fab.onclick=open; ov.querySelector('.sx').onclick=close; ov.onclick=e=>{if(e.target===ov) close();};
   const inp=ov.querySelector('input'); inp.oninput=()=>run(inp.value); run('');
